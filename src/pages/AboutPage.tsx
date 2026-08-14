@@ -197,7 +197,10 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 4. VISION & MISSION SECTION ─── */}
+      {/* ─── 4. OUR PRESENCE ACROSS INDIA (INTERACTIVE MAP) ─── */}
+      <IndiaBranchMap />
+
+      {/* ─── 5. VISION & MISSION SECTION (OUR PURPOSE) ─── */}
       <section className="bg-[#0D0D0F] py-20 lg:py-24 border-b border-[#27272A]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
@@ -253,7 +256,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 5. OUR VALUES SECTION ─── */}
+      {/* ─── 6. OUR VALUES SECTION ─── */}
       <section className="bg-[#050505] py-20 lg:py-24 border-b border-[#27272A]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
@@ -288,7 +291,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 6. WHY CHOOSE MIEUX? SECTION ─── */}
+      {/* ─── 7. WHY CHOOSE MIEUX? SECTION ─── */}
       <section className="bg-[#0D0D0F] py-20 lg:py-24 border-b border-[#27272A]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
@@ -323,7 +326,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* ─── 7. OUR JOURNEY SECTION (MILESTONES TIMELINE) ─── */}
+      {/* ─── 8. OUR JOURNEY SECTION (MILESTONES TIMELINE) ─── */}
       <section className="bg-[#050505] py-20 lg:py-24 border-b border-[#27272A]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <SectionHeading
@@ -362,9 +365,6 @@ export function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* ─── 8. OUR PRESENCE ACROSS INDIA (INTERACTIVE MAP) ─── */}
-      <IndiaBranchMap />
 
       {/* ─── 9. TRUSTED BY ENTERPRISE AND GOVERNMENT CLIENTS ─── */}
       <ClientMarquee />

@@ -130,14 +130,14 @@ export function Hero() {
               <button
                 onClick={() => go(-1)}
                 aria-label="Previous product"
-                className="grid h-7 w-7 place-items-center rounded-lg border border-[#27272A] bg-[#151518]/90 text-[#F5F5F5] backdrop-blur transition-colors hover:border-[#9B1B9E] hover:bg-[#9B1B9E]"
+                className="grid h-7 w-7 place-items-center rounded-lg border border-white/20 bg-white/10 text-white backdrop-blur-md transition-colors hover:border-[#9B1B9E] hover:bg-[#9B1B9E]"
               >
                 <ChevronLeft className="h-3.5 w-3.5" />
               </button>
               <button
                 onClick={() => go(1)}
                 aria-label="Next product"
-                className="grid h-7 w-7 place-items-center rounded-lg border border-[#27272A] bg-[#151518]/90 text-[#F5F5F5] backdrop-blur transition-colors hover:border-[#9B1B9E] hover:bg-[#9B1B9E]"
+                className="grid h-7 w-7 place-items-center rounded-lg border border-white/20 bg-white/10 text-white backdrop-blur-md transition-colors hover:border-[#9B1B9E] hover:bg-[#9B1B9E]"
               >
                 <ChevronRight className="h-3.5 w-3.5" />
               </button>
