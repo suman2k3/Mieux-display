@@ -94,7 +94,13 @@
     border-color: var(--color-border);
   }
 
-  html {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
     scroll-behavior: smooth;
   }
 

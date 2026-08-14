@@ -39,9 +39,9 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <ScrollToTop />
-        <div className="flex min-h-screen flex-col bg-[#050505] font-sans antialiased text-white">
+        <div className="flex min-h-screen flex-col bg-[#050505] font-sans antialiased text-white w-full max-w-full overflow-x-hidden relative">
           <Header />
-          <main className="flex-1 pt-[96px]">
+          <main className="flex-1 pt-[96px] w-full max-w-full overflow-x-hidden">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/gallery" element={<GalleryPage />} />

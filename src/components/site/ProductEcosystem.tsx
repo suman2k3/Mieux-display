@@ -90,7 +90,7 @@ export function ProductEcosystem() {
   }, []);
 
   return (
-    <section className="relative bg-[#050505] text-[#F5F5F5] py-16 lg:py-24 overflow-x-clip border-b border-[#27272A]">
+    <section className="relative bg-[#050505] text-[#F5F5F5] py-16 lg:py-24 overflow-hidden w-full max-w-full border-b border-[#27272A]">
       {/* Subtle purple radial glow background */}
       <div
         className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(155,27,158,0.05),transparent)] pointer-events-none"
@@ -180,9 +180,9 @@ export function ProductEcosystem() {
 
         <div
           ref={scrollRef}
-          className="mt-6 w-full overflow-x-auto py-10 pb-16 no-scrollbar relative z-10 scroll-smooth"
+          className="mt-6 w-full overflow-x-auto py-10 pb-16 no-scrollbar relative z-10 scroll-smooth snap-x snap-mandatory"
         >
-          <div className="flex w-max gap-6 px-4 sm:px-6 lg:px-8 xl:px-12 items-center">
+          <div className="flex w-max gap-4 sm:gap-6 px-4 sm:px-6 lg:px-8 xl:px-12 items-center">
             <AnimatePresence mode="popLayout">
               {filteredProducts.map((p, i) => {
                 const tagline = getMarketingTagline(p);
@@ -193,11 +193,11 @@ export function ProductEcosystem() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.96 }}
                     transition={{ duration: 0.3, delay: Math.min(i, 4) * 0.04 }}
-                    className="relative z-10 hover:z-50 shrink-0"
+                    className="relative z-10 hover:z-50 shrink-0 snap-center"
                   >
                     <Link
                       to={`/products/${p.slug}`}
-                      className="group relative block aspect-[4/5] w-[290px] sm:w-[320px] lg:w-[340px] xl:w-[350px] cursor-pointer"
+                      className="group relative block aspect-[4/5] w-[84vw] max-w-[320px] sm:w-[320px] lg:w-[340px] xl:w-[350px] cursor-pointer"
                     >
                       {/* BASE CARD */}
                       <div className="relative flex flex-col justify-end overflow-hidden rounded-[22px] border border-[#27272A] bg-[#171719] shadow-[0_15px_35px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.06)] transition-all duration-300 group-hover:border-[#9B1B9E] group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.9),0_0_25px_rgba(155,27,158,0.3)] h-full w-full">
