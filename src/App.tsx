@@ -12,6 +12,7 @@ import { ProductsPage } from "@/pages/ProductsPage";
 import { ProductDetailPage } from "@/pages/ProductDetailPage";
 import { SolutionsPage } from "@/pages/SolutionsPage";
 import { SolutionDetailPage } from "@/pages/SolutionDetailPage";
+import { GalleryPage } from "@/pages/GalleryPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 
 const queryClient = new QueryClient({
@@ -38,11 +39,12 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <ScrollToTop />
-        <div className="flex min-h-screen flex-col bg-background font-sans antialiased text-foreground">
+        <div className="flex min-h-screen flex-col bg-[#050505] font-sans antialiased text-white">
           <Header />
-          <main className="flex-1">
+          <main className="flex-1 pt-[96px]">
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/privacy" element={<PrivacyPage />} />
@@ -51,6 +53,8 @@ export default function App() {
               <Route path="/products/:slug" element={<ProductDetailPage />} />
               <Route path="/solutions" element={<SolutionsPage />} />
               <Route path="/solutions/:slug" element={<SolutionDetailPage />} />
+              <Route path="/projects" element={<GalleryPage />} />
+              <Route path="/resources" element={<ContactPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>

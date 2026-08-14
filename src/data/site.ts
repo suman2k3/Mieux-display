@@ -186,53 +186,67 @@ export const products: Product[] = [
 export type Solution = {
   slug: string;
   title: string;
+  category: string;
   description: string;
   image: string;
   outcomes: string[];
+  highlights: string[];
 };
 
 export const solutions: Solution[] = [
   {
     slug: "education",
     title: "Education",
-    description: "Interactive classrooms, lecture capture and campus-wide signage.",
+    category: "Education",
+    description: "Interactive classrooms, lecture halls, auditoriums, and campus-wide wayfinding display infrastructure.",
     image: education,
     outcomes: ["Interactive flat panels", "Lecture halls & auditoriums", "Campus wayfinding"],
+    highlights: ["4K Touch Panels", "Lecture Capture", "Campus Signage"],
   },
   {
     slug: "corporate",
     title: "Corporate",
-    description: "Boardrooms, lobbies and huddle spaces that work on the first try.",
+    category: "Corporate",
+    description: "Executive boardrooms, experience centers, and corporate lobbies engineered to perform flawlessly.",
     image: corporate,
     outcomes: ["Hybrid meeting rooms", "Lobby video walls", "Workplace signage"],
+    highlights: ["Executive Boardrooms", "Experience Centers", "Video Walls"],
   },
   {
     slug: "government",
     title: "Government",
-    description: "Citizen services, smart city command and public information systems.",
+    category: "Government",
+    description: "Compliant visual display infrastructure for smart city command centers, assembly halls, and civic offices.",
     image: controlRoom,
     outcomes: ["Smart city command", "Citizen kiosks", "Public info displays"],
+    highlights: ["GeM Compliant", "24/7 Duty Rating", "Assembly Halls"],
   },
   {
     slug: "banking",
     title: "Banking",
-    description: "Branch digital signage, queue management, rate boards and self-service kiosks.",
+    category: "Banking",
+    description: "Branch digital signage, customer queue management, exchange rate boards, and self-service kiosks.",
     image: kiosk,
     outcomes: ["Branch rate displays", "Customer queue management", "Self-service banking kiosks"],
+    highlights: ["Rate Boards", "Queue Systems", "Self-Service Kiosks"],
   },
   {
     slug: "hospitality",
     title: "Hospitality",
-    description: "Lobby LED, banquet screens and in-room guest experiences.",
+    category: "Hospitality",
+    description: "High-impact backdrop LED walls for hotel lobbies, banquet halls, and digital venue signage.",
     image: signage,
     outcomes: ["Banquet LED walls", "Lobby storytelling", "Digital menu boards"],
+    highlights: ["Banquet LED Walls", "Lobby Displays", "Menu Boards"],
   },
   {
     slug: "retail",
     title: "Retail",
-    description: "Storefront LED, in-aisle signage and window displays that convert.",
+    category: "Retail",
+    description: "High-brightness window poster displays, transparent glass facades, and interactive in-store kiosks.",
     image: transparentLed,
     outcomes: ["Window transparent LED", "Shelf-edge signage", "Queue & promo screens"],
+    highlights: ["Transparent Glass LED", "High-Brightness Posters", "Promo Screens"],
   },
 ];
 

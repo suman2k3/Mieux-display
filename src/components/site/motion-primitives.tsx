@@ -41,32 +41,36 @@ export function SectionHeading({
   subtitle,
   dark = false,
   align = "center",
+  className = "",
 }: {
   eyebrow: string;
   title: string;
   subtitle?: string | undefined;
   dark?: boolean;
   align?: "center" | "left";
+  className?: string;
 }) {
   return (
-    <Reveal className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-2xl"}>
+    <Reveal className={`${align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-2xl"} ${className}`}>
       <span
-        className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] ${
-          dark ? "bg-white/10 text-on-dark-muted" : "bg-secondary text-primary"
+        className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] shadow-sm ${
+          dark
+            ? "border border-[#27272A] bg-[#151518] text-[#9B1B9E]"
+            : "border border-[#E4E4E7] bg-[#FFFFFF] text-[#9B1B9E]"
         }`}
       >
-        <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+        <span className="h-1.5 w-1.5 rounded-full bg-[#FF6B00]" />
         {eyebrow}
       </span>
       <h2
-        className={`mt-5 text-3xl font-bold sm:text-4xl lg:text-5xl ${
-          dark ? "text-on-dark" : "text-navy"
+        className={`mt-4 font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight ${
+          dark ? "text-white" : "text-[#0D0D0F]"
         }`}
       >
         {title}
       </h2>
       {subtitle && (
-        <p className={`mt-4 text-base leading-relaxed ${dark ? "text-on-dark-muted" : "text-muted-foreground"}`}>
+        <p className={`mt-4 text-base sm:text-lg leading-relaxed ${dark ? "text-[#A1A1AA]" : "text-[#52525B]"}`}>
           {subtitle}
         </p>
       )}

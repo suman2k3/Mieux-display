@@ -11,11 +11,12 @@ export function GallerySection({ compact = true }: { compact?: boolean }) {
   const items = galleryItems.filter((g) => filter === "All" || g.category === filter);
 
   return (
-    <section className="bg-background py-20 lg:py-28">
+    <section className="bg-[#050505] py-24 lg:py-32 text-[#F5F5F5] border-b border-[#27272A]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
-          eyebrow="Project Gallery"
-          title="Recent installations"
+          dark
+          eyebrow="PROJECT GALLERY"
+          title="Recent Installations"
           subtitle={compact ? "A selection of walls, panels and signage networks commissioned by our team." : undefined}
         />
 
@@ -24,10 +25,10 @@ export function GallerySection({ compact = true }: { compact?: boolean }) {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-colors ${
+              className={`rounded-full px-5 py-2 text-xs font-semibold uppercase tracking-[0.12em] transition-all ${
                 filter === f
-                  ? "bg-primary text-primary-foreground"
-                  : "border border-border text-muted-foreground hover:border-primary hover:text-primary"
+                  ? "bg-[#9B1B9E] text-white shadow-md"
+                  : "border border-[#27272A] bg-[#151518] text-[#A1A1AA] hover:border-[#9B1B9E] hover:text-white"
               }`}
             >
               {f}
@@ -46,7 +47,7 @@ export function GallerySection({ compact = true }: { compact?: boolean }) {
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.35 }}
                 onClick={() => setLightbox(g)}
-                className="group mb-5 block w-full overflow-hidden rounded-3xl border border-border text-left shadow-soft"
+                className="group mb-5 block w-full overflow-hidden rounded-[20px] border border-[#27272A] text-left shadow-soft bg-[#151518]"
               >
                 <div className={`overflow-hidden ${g.span === "tall" ? "aspect-[3/4]" : "aspect-[4/3]"}`}>
                   <img
@@ -58,12 +59,12 @@ export function GallerySection({ compact = true }: { compact?: boolean }) {
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-                <div className="flex items-center justify-between gap-3 bg-card px-5 py-4">
+                <div className="flex items-center justify-between gap-3 bg-[#151518] px-5 py-4 border-t border-[#27272A]">
                   <div className="min-w-0">
-                    <p className="truncate font-display text-sm font-semibold text-navy">{g.title}</p>
-                    <p className="text-xs text-muted-foreground">{g.category}</p>
+                    <p className="truncate font-display text-base font-semibold text-white">{g.title}</p>
+                    <p className="text-xs text-[#A1A1AA]">{g.category}</p>
                   </div>
-                  <span className="shrink-0 text-xs font-semibold text-primary">View</span>
+                  <span className="shrink-0 text-xs font-semibold text-[#9B1B9E]">View</span>
                 </div>
               </motion.button>
             ))}
@@ -77,25 +78,25 @@ export function GallerySection({ compact = true }: { compact?: boolean }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] grid place-items-center bg-ink/90 p-4 backdrop-blur"
+            className="fixed inset-0 z-[60] grid place-items-center bg-black/90 p-4 backdrop-blur-md"
             onClick={() => setLightbox(null)}
           >
             <motion.div
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
-              className="relative w-full max-w-4xl overflow-hidden rounded-3xl"
+              className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-[#27272A] bg-[#151518]"
               onClick={(e) => e.stopPropagation()}
             >
               <img src={lightbox.image} alt={lightbox.title} className="w-full object-contain" />
-              <div className="bg-ink-2 px-6 py-4 text-on-dark">
+              <div className="bg-[#0D0D0F] px-6 py-4 text-white">
                 <p className="font-display text-base font-semibold">{lightbox.title}</p>
-                <p className="text-xs text-on-dark-muted">{lightbox.category}</p>
+                <p className="text-xs text-[#A1A1AA]">{lightbox.category}</p>
               </div>
               <button
                 onClick={() => setLightbox(null)}
                 aria-label="Close"
-                className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-xl bg-ink/70 text-on-dark"
+                className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-xl bg-black/70 text-white hover:bg-black"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -115,10 +116,10 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section className="section-dark relative overflow-hidden py-20 lg:py-28">
+    <section className="bg-[#0D0D0F] text-[#F5F5F5] relative overflow-hidden py-24 lg:py-32 border-b border-[#27272A]">
       <div className="absolute inset-0 grid-glow opacity-25" aria-hidden />
       <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
-        <SectionHeading dark eyebrow="Testimonials" title="What our clients say" />
+        <SectionHeading dark eyebrow="TESTIMONIALS" title="What our clients say" />
         <div className="mt-12 min-h-[280px]">
           <AnimatePresence mode="wait">
             <motion.figure
@@ -127,23 +128,23 @@ export function Testimonials() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.5 }}
-              className="glass-card rounded-3xl p-8 sm:p-12"
+              className="rounded-3xl p-8 sm:p-12 border border-[#27272A] bg-[#151518]"
             >
-              <div className="flex gap-1 text-accent">
+              <div className="flex gap-1 text-[#FF6B00]">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-current" />
                 ))}
               </div>
-              <blockquote className="mt-6 font-display text-xl leading-relaxed text-on-dark sm:text-2xl">
+              <blockquote className="mt-6 font-display text-xl leading-relaxed text-white sm:text-2xl">
                 “{testimonials[index]!.quote}”
               </blockquote>
               <figcaption className="mt-8 flex items-center gap-4">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[var(--gradient-brand)] font-display text-sm font-bold text-white">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-[#9B1B9E] font-display text-sm font-bold text-white shadow-md">
                   {testimonials[index]!.initials}
                 </span>
                 <span className="min-w-0">
-                  <span className="block truncate font-semibold text-on-dark">{testimonials[index]!.name}</span>
-                  <span className="block truncate text-sm text-on-dark-muted">{testimonials[index]!.role}</span>
+                  <span className="block truncate font-semibold text-white">{testimonials[index]!.name}</span>
+                  <span className="block truncate text-sm text-[#A1A1AA]">{testimonials[index]!.role}</span>
                 </span>
               </figcaption>
             </motion.figure>
@@ -155,7 +156,7 @@ export function Testimonials() {
               key={t.name}
               onClick={() => setIndex(i)}
               aria-label={`Testimonial ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all ${i === index ? "w-10 bg-accent" : "w-4 bg-white/25"}`}
+              className={`h-1.5 rounded-full transition-all ${i === index ? "w-10 bg-[#FF6B00]" : "w-4 bg-white/25"}`}
             />
           ))}
         </div>
@@ -166,42 +167,44 @@ export function Testimonials() {
 
 export function CtaSection() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#071D35] bg-gradient-to-r from-[#071D35] via-[#0B1A30] to-[#071D35] py-24 text-white">
+    <section className="relative isolate overflow-hidden bg-[#0D0D0F] py-24 lg:py-28 text-[#F5F5F5] border-b border-[#27272A]">
       {/* Background glowing vertical lines */}
-      <div className="absolute inset-0" aria-hidden>
+      <div className="absolute inset-0 pointer-events-none" aria-hidden>
         {[18, 38, 58, 78].map((left, i) => (
           <motion.span
             key={left}
-            className="absolute top-0 h-full w-px bg-gradient-to-b from-transparent via-[#0057FF]/70 to-transparent"
+            className="absolute top-0 h-full w-px bg-gradient-to-b from-transparent via-[#9B1B9E]/40 to-transparent"
             style={{ left: `${left}%` }}
-            animate={{ opacity: [0.15, 0.9, 0.15] }}
+            animate={{ opacity: [0.15, 0.8, 0.15] }}
             transition={{ duration: 4 + i, repeat: Infinity, delay: i * 0.7 }}
           />
         ))}
       </div>
 
-      <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 z-10">
         <Reveal>
-          <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <span className="text-xs font-bold uppercase tracking-[0.24em] text-[#FF6B00]">
+            CONSULTATION & SPECIFICATION
+          </span>
+          <h2 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl font-display leading-tight">
             Ready to Transform Your Display Experience?
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-slate-300">
-            Share your space, budget and timeline. We will come back with a pixel-pitch recommendation,
-            layout drawing and a fixed quote.
+          <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg leading-relaxed text-[#A1A1AA]">
+            Share your space, budget and timeline. We will recommend the right display solution, pixel-pitch and layout drawing.
           </p>
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 rounded-xl bg-[#0057FF] px-8 py-4 text-sm font-semibold text-white shadow-[0_4px_20px_rgba(0,87,255,0.4)] transition-transform hover:-translate-y-0.5"
+              className="group inline-flex items-center gap-2 rounded-xl bg-[#9B1B9E] px-8 py-4 text-sm font-bold text-white shadow-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#B52CB8]"
             >
               Get a Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <a
-              href={`tel:${company.phone.replace(/\s/g, "")}`}
-              className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-8 py-4 text-sm font-semibold text-white backdrop-blur transition-colors hover:border-[#0057FF] hover:bg-white/20"
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-xl border border-[#27272A] bg-[#151518] px-8 py-4 text-sm font-semibold text-white backdrop-blur transition-all hover:border-[#9B1B9E] hover:bg-[#1D1D21]"
             >
-              <Phone className="h-4 w-4 text-[#0057FF]" /> Talk to an Expert
-            </a>
+              <Phone className="h-4 w-4 text-[#9B1B9E]" /> Talk to an Expert
+            </Link>
           </div>
         </Reveal>
       </div>

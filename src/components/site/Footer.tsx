@@ -36,7 +36,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-ink text-on-dark-muted">
+    <footer className="bg-[#050505] text-[#A1A1AA] border-t border-[#27272A]">
       {/* MAIN FOOTER CONTENT */}
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
@@ -45,14 +45,14 @@ export function Footer() {
             <div className="inline-block rounded-2xl bg-white p-3.5 shadow-md">
               <img src={logoImg} alt="MIEUX DISPLAY" className="h-14 w-auto sm:h-16 object-contain" />
             </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed">
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#A1A1AA]">
               Enterprise LED, interactive and digital signage solutions — engineered, installed and
               supported across India.
             </p>
 
             {/* COMPACT NEWSLETTER OPTION BELOW LOGO */}
             <div className="mt-5 max-w-xs">
-              <p className="text-xs font-semibold uppercase tracking-wider text-on-dark mb-2">
+              <p className="text-xs font-semibold uppercase tracking-wider text-white mb-2">
                 Subscribe to Newsletter
               </p>
               {subscribed ? (
@@ -67,11 +67,11 @@ export function Footer() {
                     placeholder="Enter work email..."
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-xs text-white placeholder-slate-400 focus:border-[#0057FF] focus:outline-none"
+                    className="w-full rounded-lg border border-[#27272A] bg-[#0D0D0F] px-3 py-2 text-xs text-white placeholder-[#71717A] focus:border-[#9B1B9E] focus:outline-none"
                   />
                   <button
                     type="submit"
-                    className="shrink-0 rounded-lg bg-[#0057FF] px-3.5 py-2 text-xs font-semibold text-white shadow-sm transition-transform hover:scale-105"
+                    className="shrink-0 rounded-lg bg-[#9B1B9E] hover:bg-[#B52CB8] px-3.5 py-2 text-xs font-bold text-white shadow-sm transition-all hover:scale-105"
                   >
                     Subscribe
                   </button>
@@ -86,7 +86,7 @@ export function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/5 transition-colors hover:border-primary hover:text-on-dark"
+                  className="grid h-10 w-10 place-items-center rounded-xl border border-[#27272A] bg-[#151518] text-[#A1A1AA] transition-colors hover:border-[#9B1B9E] hover:text-[#9B1B9E]"
                 >
                   <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
                     <path d={path} />
@@ -97,38 +97,39 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-on-dark">Company</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">Company</h3>
             <ul className="mt-5 space-y-3 text-sm">
               {[
                 { label: "About Us", to: "/about" },
                 { label: "Solutions", to: "/solutions" },
                 { label: "Products", to: "/products" },
+                { label: "Gallery", to: "/gallery" },
                 { label: "Contact", to: "/contact" },
               ].map((l) => (
                 <li key={l.label}>
-                  <Link to={l.to} className="transition-colors hover:text-on-dark">
+                  <Link to={l.to} className="transition-colors text-[#A1A1AA] hover:text-[#B52CB8]">
                     {l.label}
                   </Link>
                 </li>
               ))}
-              <li><Link to="/privacy" className="transition-colors hover:text-on-dark">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="transition-colors hover:text-on-dark">Terms of Use</Link></li>
+              <li><Link to="/privacy" className="transition-colors text-[#A1A1AA] hover:text-[#B52CB8]">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="transition-colors text-[#A1A1AA] hover:text-[#B52CB8]">Terms of Use</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-on-dark">Explore</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">Explore</h3>
             <ul className="mt-5 space-y-3 text-sm">
               {products.slice(0, 5).map((p) => (
                 <li key={p.slug}>
-                  <Link to={`/products/${p.slug}`} className="transition-colors hover:text-on-dark">
+                  <Link to={`/products/${p.slug}`} className="transition-colors text-[#A1A1AA] hover:text-[#B52CB8]">
                     {p.name}
                   </Link>
                 </li>
               ))}
               {solutions.slice(0, 2).map((s) => (
                 <li key={s.slug}>
-                  <Link to={`/solutions/${s.slug}`} className="transition-colors hover:text-on-dark">
+                  <Link to={`/solutions/${s.slug}`} className="transition-colors text-[#A1A1AA] hover:text-[#B52CB8]">
                     {s.title} Solutions
                   </Link>
                 </li>
@@ -137,18 +138,18 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-on-dark">Contact</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">Contact</h3>
             <ul className="mt-5 space-y-4 text-sm">
               <li className="flex gap-3">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="hover:text-on-dark">{company.phone}</a>
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#9B1B9E]" />
+                <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="hover:text-white">{company.phone}</a>
               </li>
               <li className="flex gap-3">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href={`mailto:${company.email}`} className="hover:text-on-dark">{company.email}</a>
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#9B1B9E]" />
+                <a href={`mailto:${company.email}`} className="hover:text-white">{company.email}</a>
               </li>
               <li className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#9B1B9E]" />
                 <span>{company.address}</span>
               </li>
             </ul>
@@ -156,8 +157,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10">
-        <div className="mx-auto max-w-7xl px-4 py-6 text-center text-xs sm:px-6">
+      <div className="border-t border-[#27272A]">
+        <div className="mx-auto max-w-7xl px-4 py-6 text-center text-xs text-[#71717A] sm:px-6">
           © 2026 {company.name}. All Rights Reserved.
         </div>
       </div>

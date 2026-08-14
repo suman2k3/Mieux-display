@@ -2,165 +2,196 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { img } from "@/data/site";
+import { catalogueProducts, type CatalogueProduct } from "@/data/catalogueProducts";
+import { Counter } from "./motion-primitives";
 
-const slides = [
-  {
-    kicker: "LED Video Walls",
-    title: "Displays that make every room the main stage",
-    body: "Fine-pitch LED walls engineered, calibrated and installed by MIEUX — for auditoriums, lobbies and command centres across India.",
-    image: img.heroVideoWall,
-  },
-  {
-    kicker: "Interactive Flat Panels",
-    title: "Collaboration without the friction",
-    body: "4K multi-touch panels with wireless casting, whiteboarding and fleet management built for classrooms and boardrooms.",
-    image: img.heroIfp,
-  },
-  {
-    kicker: "Outdoor LED",
-    title: "Brilliance that beats the sunlight",
-    body: "IP65 high-brightness facade and billboard systems rated up to 8000 nits, monitored around the clock from the cloud.",
-    image: img.heroOutdoor,
-  },
-  {
-    kicker: "Control Rooms",
-    title: "Visualisation for mission-critical work",
-    body: "Redundant, 24x7-rated LED and LCD walls with KVM and multi-source processing for operations that cannot stop.",
-    image: img.controlRoom,
-  },
-];
-
-const particles = Array.from({ length: 22 }, (_, i) => ({
-  left: (i * 37) % 100,
-  top: (i * 53) % 100,
-  delay: (i % 7) * 0.6,
-  size: 2 + (i % 3),
-}));
+// Selected showcase products for the Home Hero Carousel
+const heroProducts: CatalogueProduct[] = [
+  catalogueProducts.find((p) => p.id === "spectra-s1")!,
+  catalogueProducts.find((p) => p.id === "apex-cob")!,
+  catalogueProducts.find((p) => p.id === "visionwall-4k")!,
+  catalogueProducts.find((p) => p.id === "interactive-pro")!,
+  catalogueProducts.find((p) => p.id === "nova-outdoor")!,
+  catalogueProducts.find((p) => p.id === "controlview")!,
+].filter(Boolean);
 
 export function Hero() {
   const [index, setIndex] = useState(0);
-  const go = useCallback((dir: number) => setIndex((i) => (i + dir + slides.length) % slides.length), []);
 
+  const go = useCallback((dir: number) => {
+    setIndex((i) => (i + dir + heroProducts.length) % heroProducts.length);
+  }, []);
+
+  // Autoplay carousel (always autoslides continuously every 2 seconds)
   useEffect(() => {
-    const t = setInterval(() => go(1), 5000);
+    const t = setInterval(() => {
+      setIndex((i) => (i + 1) % heroProducts.length);
+    }, 2000);
     return () => clearInterval(t);
-  }, [go]);
+  }, []);
 
-  const slide = slides[index]!;
+  const slide = heroProducts[index]!;
 
   return (
-    <section className="relative isolate overflow-hidden bg-ink text-on-dark">
-      <div className="absolute inset-0 grid-glow opacity-40" aria-hidden />
-      <div className="absolute inset-0" aria-hidden>
-        {particles.map((p, i) => (
-          <motion.span
-            key={i}
-            className="absolute rounded-full bg-primary/60"
-            style={{ left: `${p.left}%`, top: `${p.top}%`, width: p.size, height: p.size }}
-            animate={{ y: [0, -26, 0], opacity: [0.15, 0.8, 0.15] }}
-            transition={{ duration: 6 + (i % 5), repeat: Infinity, delay: p.delay }}
-          />
-        ))}
-      </div>
+    <section className="relative isolate overflow-hidden bg-[#050505] text-[#F5F5F5] min-h-[calc(100svh-4rem)] flex flex-col justify-between border-b border-[#27272A]">
+      {/* ─── FULL-WIDTH ACTIVE PRODUCT BACKGROUND IMAGE WITH CROSSFADE ─── */}
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={slide.id}
+          src={slide.image}
+          alt={slide.name}
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-40 brightness-110 pointer-events-none"
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        />
+      </AnimatePresence>
 
-      <div className="mx-auto grid min-h-[calc(100svh-8rem)] max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:py-24">
-        <div className="relative z-10">
+      {/* ─── DARK GRADIENT OVERLAYS FOR CRISP READABILITY & CONTRAST ─── */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/90 to-[#050505]/50 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/70 pointer-events-none" />
+
+      {/* ─── MAIN HERO CONTAINER OVER FULL-WIDTH BACKGROUND ─── */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 w-full py-16 sm:py-20 lg:py-24 relative z-10 my-auto pb-28 sm:pb-32">
+        {/* TOP / CENTER: PRODUCT INFORMATION & PRIMARY CTAS */}
+        <div className="max-w-2xl my-auto">
           <AnimatePresence mode="wait">
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 24 }}
+              key={slide.id}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-on-dark-muted">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
-                {slide.kicker}
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#FF7A00]/40 bg-[#FF7A00]/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#FF7A00] backdrop-blur-md">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-[#9B1B9E]" />
+                {slide.category}
               </span>
-              <h1 className="mt-6 text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
-                {slide.title.split(" ").map((w, i) => (
-                  <motion.span
-                    key={`${index}-${i}`}
-                    className="mr-[0.28em] inline-block"
-                    initial={{ opacity: 0, y: 18 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.06 * i, duration: 0.45 }}
-                  >
-                    {w}
-                  </motion.span>
-                ))}
+
+              <h1 className="mt-3 text-3xl font-extrabold leading-[1.12] sm:text-4xl lg:text-5xl text-[#FFFFFF] drop-shadow-lg tracking-tight font-display">
+                <Link
+                  to={`/products/${slide.slug}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {slide.name}
+                </Link>
               </h1>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-on-dark-muted sm:text-lg">{slide.body}</p>
+
+              <p className="mt-1.5 text-xs sm:text-sm font-bold text-[#9B1B9E] uppercase tracking-widest">
+                {slide.subtitle}
+              </p>
+
+              <p className="mt-2.5 max-w-xl text-xs sm:text-sm leading-relaxed text-[#A1A1AA] drop-shadow font-medium line-clamp-2 sm:line-clamp-3">
+                {slide.description}
+              </p>
             </motion.div>
           </AnimatePresence>
 
-          <div className="mt-9 flex flex-wrap gap-3">
+          {/* Primary CTAs */}
+          <div className="mt-5 flex flex-wrap items-center gap-3">
             <Link
-              to="/products"
-              className="group inline-flex items-center gap-2 rounded-xl bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-glow)] transition-transform duration-200 hover:-translate-y-0.5"
+              to={`/products/${slide.slug}`}
+              className="group inline-flex items-center gap-2 rounded-xl bg-[#9B1B9E] px-6 py-2.5 text-xs sm:text-sm font-bold text-white shadow-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#B52CB8]"
             >
-              Explore Products
+              <span>View Product</span>
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
+
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-7 py-4 text-sm font-semibold text-on-dark backdrop-blur transition-colors hover:border-accent hover:bg-accent/10"
+              className="inline-flex items-center gap-2 rounded-xl border border-[#27272A] bg-[#151518]/90 px-6 py-2.5 text-xs sm:text-sm font-semibold text-[#F5F5F5] backdrop-blur-md transition-all hover:bg-[#1D1D21] hover:border-[#9B1B9E]"
             >
-              Get Quote
+              Request a Quote
             </Link>
           </div>
 
-          <div className="mt-12 flex items-center gap-4">
-            <div className="flex gap-2">
-              {slides.map((s, i) => (
+          {/* Carousel Navigation Controls */}
+          <div className="mt-5 flex items-center gap-4">
+            {/* Indicator Dots */}
+            <div className="flex items-center gap-1.5">
+              {heroProducts.map((p, i) => (
                 <button
-                  key={s.kicker}
+                  key={p.id}
                   onClick={() => setIndex(i)}
                   aria-label={`Go to slide ${i + 1}`}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === index ? "w-10 bg-accent" : "w-4 bg-white/25 hover:bg-white/50"
+                    i === index ? "w-7 sm:w-9 bg-[#9B1B9E]" : "w-3 bg-white/25 hover:bg-white/50"
                   }`}
                 />
               ))}
             </div>
-            <div className="ml-auto flex gap-2">
+
+            {/* Counter & Arrows */}
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-xs font-bold text-[#A1A1AA] mr-1">
+                0{index + 1} / 0{heroProducts.length}
+              </span>
               <button
                 onClick={() => go(-1)}
-                aria-label="Previous slide"
-                className="grid h-11 w-11 place-items-center rounded-xl border border-white/15 bg-white/5 transition-colors hover:border-primary"
+                aria-label="Previous product"
+                className="grid h-7 w-7 place-items-center rounded-lg border border-[#27272A] bg-[#151518]/90 text-[#F5F5F5] backdrop-blur transition-colors hover:border-[#9B1B9E] hover:bg-[#9B1B9E]"
               >
-                <ChevronLeft className="h-4 w-4" />
+                <ChevronLeft className="h-3.5 w-3.5" />
               </button>
               <button
                 onClick={() => go(1)}
-                aria-label="Next slide"
-                className="grid h-11 w-11 place-items-center rounded-xl border border-white/15 bg-white/5 transition-colors hover:border-primary"
+                aria-label="Next product"
+                className="grid h-7 w-7 place-items-center rounded-lg border border-[#27272A] bg-[#151518]/90 text-[#F5F5F5] backdrop-blur transition-colors hover:border-[#9B1B9E] hover:bg-[#9B1B9E]"
               >
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-3.5 w-3.5" />
               </button>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="relative">
-          <div className="absolute -inset-6 rounded-[2rem] bg-primary/20 blur-3xl" aria-hidden />
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/10">
-            <AnimatePresence mode="sync">
-              <motion.img
-                key={index}
-                src={slide.image}
-                alt={slide.kicker}
-                width={1600}
-                height={1100}
-                className="absolute inset-0 h-full w-full object-cover"
-                initial={{ opacity: 0, scale: 1.12 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-              />
-            </AnimatePresence>
-            <div className="absolute inset-0 bg-gradient-to-tr from-ink via-ink/20 to-transparent" aria-hidden />
+      {/* ─── FLOATING HERO STATISTICS OVERLAY (VISIBILITY IN FIRST VIEWPORT) ─── */}
+      <div className="absolute bottom-5 sm:bottom-6 lg:bottom-7 left-1/2 -translate-x-1/2 w-full max-w-7xl px-4 sm:px-6 z-30 pointer-events-none">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 items-center pointer-events-auto">
+          <div className="flex flex-col text-left sm:text-center">
+            <span className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#FFFFFF] tracking-tight leading-none drop-shadow-md">
+              <Counter to={500} suffix="+" />
+            </span>
+            <span className="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#A1A1AA]">
+              DISPLAY INSTALLATIONS
+            </span>
+          </div>
+
+          <div className="flex flex-col text-left sm:text-center">
+            <span className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#FFFFFF] tracking-tight leading-none drop-shadow-md">
+              <Counter to={100} suffix="+" />
+            </span>
+            <span className="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#A1A1AA]">
+              ENTERPRISE CLIENTS
+            </span>
+          </div>
+
+          <div className="flex flex-col text-left sm:text-center">
+            <span className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#FFFFFF] tracking-tight leading-none drop-shadow-md">
+              <Counter to={25} suffix="+" />
+            </span>
+            <span className="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#A1A1AA]">
+              CITIES SERVED
+            </span>
+          </div>
+
+          <div className="flex flex-col text-left sm:text-center">
+            <span className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#FFFFFF] tracking-tight leading-none drop-shadow-md">
+              <Counter to={10} suffix="+" />
+            </span>
+            <span className="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#A1A1AA]">
+              YEARS EXPERIENCE
+            </span>
+          </div>
+
+          <div className="flex flex-col text-left sm:text-center col-span-2 sm:col-span-1">
+            <span className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#FF6B00] tracking-tight leading-none drop-shadow-md">
+              24/7
+            </span>
+            <span className="mt-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.18em] text-[#A1A1AA]">
+              ENTERPRISE SUPPORT
+            </span>
           </div>
         </div>
       </div>

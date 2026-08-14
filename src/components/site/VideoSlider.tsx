@@ -53,12 +53,14 @@ export function VideoSlider() {
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Sliding Video Cards Container */}
-        <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth"
-        >
+      {/* Sliding Video Cards Container */}
+      <div
+        ref={scrollRef}
+        className="w-full overflow-x-auto pb-6 pt-2 no-scrollbar snap-x snap-mandatory scroll-smooth"
+      >
+        <div className="flex w-max gap-6 px-4 sm:px-6 lg:px-12">
           {videoItems.map((video) => (
             <article
               key={video.id}
