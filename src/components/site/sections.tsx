@@ -3,90 +3,18 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Download, Eye, FileText } from "lucide-react";
 import { Reveal, SectionHeading, Counter } from "./motion-primitives";
-import { products, solutions, industries, stats, clients, img } from "@/data/site";
+import { catalogueProducts } from "@/data/catalogueProducts";
 
-const showcaseProducts = [
-  {
-    slug: "indoor-led-display",
-    eyebrow: "FINE-PITCH LED FOR INTERIORS",
-    name: "Indoor LED Display",
-    desc: "Seamless fine-pitch LED walls engineered for executive boardrooms, auditoriums and control rooms.",
-    image: img.indoorLed,
-    specs: ["P0.9 – P1.2", "3840Hz", "HDR 10+"],
-  },
-  {
-    slug: "outdoor-led-display",
-    eyebrow: "WEATHERPROOF HIGH-BRIGHTNESS",
-    name: "Outdoor LED Display",
-    desc: "IP65 facade billboards rated up to 8000 nits for extreme daylight visibility and storm protection.",
-    image: img.heroOutdoor,
-    specs: ["IP65 Sealed", "8000 Nits", "Cloud CMS"],
-  },
-  {
-    slug: "interactive-flat-panel",
-    eyebrow: "COLLABORATION & WHITEBOARDING",
-    name: "Interactive Flat Panel",
-    desc: "4K multi-touch panels with wireless screen sharing and built-in digital whiteboarding.",
-    image: img.heroIfp,
-    specs: ["40-Point Touch", "Zero Latency", "4K UHD"],
-  },
-  {
-    slug: "commercial-display",
-    eyebrow: "24/7 INDUSTRIAL PANELS",
-    name: "Commercial Display",
-    desc: "Industrial LCD panels for high-duty digital signage, airports, hospitals and retail venues.",
-    image: img.signage,
-    specs: ["24/7 Duty Rating", "500 Nits", "Slim Mount"],
-  },
-  {
-    slug: "lcd-video-wall",
-    eyebrow: "ULTRA-NARROW BEZEL MATRIX",
-    name: "LCD Video Wall",
-    desc: "Sub-millimeter ultra-narrow bezel video walls for continuous operation and monitoring centers.",
-    image: img.heroVideoWall,
-    specs: ["0.88mm Bezel", "Daisy Chain", "Factory Calibrated"],
-  },
-  {
-    slug: "digital-signage",
-    eyebrow: "RETAIL & VENUE DISPLAY",
-    name: "Digital Signage",
-    desc: "High-impact digital posters and kiosk displays with centralized cloud remote scheduling.",
-    image: img.kiosk,
-    specs: ["Cloud CMS", "Portrait Format", "Tamper Proof"],
-  },
-  {
-    slug: "touch-kiosk",
-    eyebrow: "SELF-SERVICE WAYFINDING",
-    name: "Touch Kiosk",
-    desc: "Interactive wayfinding kiosks with anti-glare capacitive glass and custom enclosures.",
-    image: img.kiosk,
-    specs: ["Multi-Touch", "Custom Enclosure", "IP54 Rated"],
-  },
-  {
-    slug: "control-room-display",
-    eyebrow: "MISSION-CRITICAL NOC/SOC",
-    name: "Control Room Display",
-    desc: "Redundant, low-latency video display walls engineered for 24/7 strategic command centers.",
-    image: img.controlRoom,
-    specs: ["Redundant Power", "Sub-8ms Latency", "KVM Matrix"],
-  },
-  {
-    slug: "creative-led",
-    eyebrow: "CURVED & TRANSPARENT CANVAS",
-    name: "Creative LED",
-    desc: "Flexible, transparent and curved LED panels tailored for high-end architectural venues.",
-    image: img.transparentLed,
-    specs: ["80% Transparency", "Curved Modules", "Custom Shapes"],
-  },
-  {
-    slug: "floor-led-display",
-    eyebrow: "HIGH-LOAD INTERACTIVE STAGE",
-    name: "Floor LED Display",
-    desc: "Impact-resistant interactive floor LED modules for brand experience centers and stages.",
-    image: img.heroVideoWall,
-    specs: ["2000kg/m² Load", "Optical Touch", "Anti-Slip Mask"],
-  },
-];
+const showcaseProducts = catalogueProducts.map((p) => ({
+  slug: p.slug,
+  eyebrow: (p.subtitle || p.category).toUpperCase(),
+  name: p.name,
+  desc: p.description,
+  image: p.image,
+  specs: p.quickSpecs
+    ? (Object.values(p.quickSpecs).filter(Boolean) as string[]).slice(0, 3)
+    : ["High Definition", "Commercial Rating", "Enterprise Support"],
+}));
 
 export function ProductShowcase() {
   const scrollRef = useRef<HTMLDivElement>(null);

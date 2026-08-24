@@ -167,46 +167,53 @@ export function Testimonials() {
 
 export function CtaSection() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#0D0D0F] py-24 lg:py-28 text-[#F5F5F5] border-b border-[#27272A]">
-      {/* Background glowing vertical lines */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden>
-        {[18, 38, 58, 78].map((left, i) => (
-          <motion.span
-            key={left}
-            className="absolute top-0 h-full w-px bg-gradient-to-b from-transparent via-[#9B1B9E]/40 to-transparent"
-            style={{ left: `${left}%` }}
-            animate={{ opacity: [0.15, 0.8, 0.15] }}
-            transition={{ duration: 4 + i, repeat: Infinity, delay: i * 0.7 }}
-          />
-        ))}
-      </div>
-
-      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 z-10">
-        <Reveal>
-          <span className="text-xs font-bold uppercase tracking-[0.24em] text-[#FF6B00]">
-            CONSULTATION & SPECIFICATION
-          </span>
-          <h2 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl font-display leading-tight">
-            Ready to Transform Your Display Experience?
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base sm:text-lg leading-relaxed text-[#A1A1AA]">
-            Share your space, budget and timeline. We will recommend the right display solution, pixel-pitch and layout drawing.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 rounded-xl bg-[#9B1B9E] px-8 py-4 text-sm font-bold text-white shadow-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#B52CB8]"
-            >
-              Get a Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-xl border border-[#27272A] bg-[#151518] px-8 py-4 text-sm font-semibold text-white backdrop-blur transition-all hover:border-[#9B1B9E] hover:bg-[#1D1D21]"
-            >
-              <Phone className="h-4 w-4 text-[#9B1B9E]" /> Talk to an Expert
-            </Link>
+    <section className="relative isolate overflow-hidden bg-[#050505] py-16 lg:py-24 text-[#F5F5F5] border-b border-[#27272A]">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          {/* Left Text & CTA Buttons (6 cols) */}
+          <div className="lg:col-span-6">
+            <Reveal>
+              <h2 className="text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl font-display leading-[1.15]">
+                Ready to Transform Your <span className="text-[#9B1B9E]">Display Experience?</span>
+              </h2>
+              <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#A1A1AA] font-medium max-w-xl">
+                Let's discuss your requirements and create a solution that makes an impact.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Link
+                  to="/contact"
+                  className="group inline-flex items-center gap-2 rounded-full bg-[#9B1B9E] px-7 py-3.5 text-xs sm:text-sm font-bold text-white shadow-xl transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#B52CB8]"
+                >
+                  <span>Get a Quote</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-7 py-3.5 text-xs sm:text-sm font-semibold text-white backdrop-blur-md transition-all hover:border-[#9B1B9E] hover:bg-white/10"
+                >
+                  <span>Talk to an Expert</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </Reveal>
           </div>
-        </Reveal>
+
+          {/* Right Futuristic Display Canvas Image (6 cols — Matching Reference Mockup) */}
+          <div className="lg:col-span-6 relative">
+            <Reveal delay={0.15}>
+              <div className="relative overflow-hidden rounded-[26px] border border-[#27272A] bg-[#151518] shadow-2xl aspect-[16/10]">
+                <img
+                  src={company.imgHero || "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"}
+                  alt="Futuristic display technology canvas"
+                  className="h-full w-full object-cover brightness-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/40 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </Reveal>
+          </div>
+
+        </div>
       </div>
     </section>
   );

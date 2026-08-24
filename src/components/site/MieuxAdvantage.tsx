@@ -23,24 +23,22 @@ export function MieuxAdvantage() {
   ];
 
   return (
-    <section className="bg-[#050505] text-[#F5F5F5] py-16 lg:py-24 relative overflow-hidden border-b border-[#27272A]">
-      <div className="absolute inset-0 grid-glow opacity-25" aria-hidden />
-
+    <section className="bg-[#F7F7F5] text-[#0D0D0F] py-16 lg:py-24 relative overflow-hidden border-b border-[#E4E4E7]">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid gap-10 lg:grid-cols-12 items-center">
           {/* Left: Large Installation Photograph (6 cols) */}
           <div className="lg:col-span-6 relative">
             <Reveal x={-30}>
               <div className="relative">
-                <div className="absolute -inset-3 rounded-[2.5rem] bg-[#9B1B9E]/15 blur-2xl" aria-hidden />
-                <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[1.1] w-full overflow-hidden rounded-[22px] border border-[#27272A] shadow-2xl bg-[#151518]">
+                <div className="absolute -inset-3 rounded-[2.5rem] bg-[#9B1B9E]/10 blur-2xl" aria-hidden />
+                <div className="relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[1.1] w-full overflow-hidden rounded-[22px] border border-[#E4E4E7] shadow-xl bg-white">
                   <img
-                    src={img.indoorLed}
-                    alt="MIEUX engineers installing a fine-pitch LED display wall"
+                    src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1200&q=80"
+                    alt="MIEUX engineering team surveying and installing high-performance display infrastructure"
                     loading="lazy"
                     className="h-full w-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                 </div>
               </div>
             </Reveal>
@@ -50,23 +48,23 @@ export function MieuxAdvantage() {
           <div className="lg:col-span-6 space-y-6">
             <SectionHeading
               align="left"
-              dark
+              dark={false}
               eyebrow="MIEUX ADVANTAGE"
               title="Engineering-led. Not box-shifting."
               subtitle="We survey, specify, install, commission and support. One engineering team owns the outcome from first drawing to last service visit."
             />
 
             {/* 4 Proof Points List (Clean Typography, NO Card Boxes) */}
-            <div className="space-y-4 pt-2 border-t border-[#27272A]">
+            <div className="space-y-4 pt-2 border-t border-[#E4E4E7]">
               {proofPoints.map((p, i) => (
                 <Reveal key={p.title} delay={i * 0.08}>
                   <div className="flex items-start gap-3.5">
                     <CheckCircle2 className="h-5 w-5 shrink-0 text-[#9B1B9E] mt-0.5" />
                     <div>
-                      <h4 className="font-display text-base sm:text-lg font-bold text-white">
+                      <h4 className="font-display text-base sm:text-lg font-bold text-[#0D0D0F]">
                         {p.title}
                       </h4>
-                      <p className="text-sm sm:text-base text-[#A1A1AA] leading-relaxed mt-0.5">
+                      <p className="text-sm sm:text-base text-[#52525B] leading-relaxed mt-0.5">
                         {p.desc}
                       </p>
                     </div>
@@ -76,13 +74,13 @@ export function MieuxAdvantage() {
             </div>
 
             {/* Compact Proof Metrics */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-[#27272A] pt-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-[#E4E4E7] pt-6">
               {stats.map((s) => (
                 <div key={s.label}>
                   <p className="font-display text-2xl sm:text-3xl font-black text-[#9B1B9E] tracking-tight">
                     <Counter to={s.value} suffix={s.suffix} />
                   </p>
-                  <p className="mt-0.5 text-xs font-bold uppercase tracking-wider text-[#A1A1AA]">
+                  <p className="mt-0.5 text-xs font-bold uppercase tracking-wider text-[#52525B]">
                     {s.label}
                   </p>
                 </div>

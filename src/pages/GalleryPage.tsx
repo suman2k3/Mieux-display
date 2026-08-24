@@ -2,9 +2,10 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronLeft, ChevronRight, ArrowUpRight, Camera } from "lucide-react";
 import { eventGalleries, type GalleryPhoto } from "@/data/galleryData";
-import { Reveal, SectionHeading } from "@/components/site/motion-primitives";
+import { Reveal } from "@/components/site/motion-primitives";
 import { EventGalleryCard } from "@/components/gallery/EventGalleryCard";
 import { GalleryLightbox } from "@/components/gallery/GalleryLightbox";
+import { CtaSection } from "@/components/site/sections-2";
 
 const categoryFilters = [
   "All",
@@ -29,14 +30,14 @@ export function GalleryPage() {
 
   const featuredCarouselRef = useRef<HTMLDivElement>(null);
 
-  // All published events sorted by displayOrder (all 5 categories are rendered continuously)
+  // All published events sorted by displayOrder
   const allPublishedEvents = useMemo(() => {
     return eventGalleries
       .filter((event) => event.isPublished)
       .sort((a, b) => a.displayOrder - b.displayOrder);
   }, []);
 
-  // Aggregate all photos for "Featured Moments" carousel
+  // Aggregate all photos for "Moments Worth Remembering" horizontal carousel
   const featuredMoments = useMemo(() => {
     const photos: { photo: GalleryPhoto; eventTitle: string; eventId: string; photoIndex: number }[] = [];
     allPublishedEvents.forEach((evt) => {
@@ -50,12 +51,11 @@ export function GalleryPage() {
   // Dynamic cover image for hero background
   const heroCoverImage = allPublishedEvents[0]?.coverImage || allPublishedEvents[0]?.images?.[0]?.url;
 
-  // Scroll spy: update active category pill based on which event section is visible in viewport
+  // Scroll spy: update active category pill based on visible event section
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 250;
 
-      // If near top of page (hero / featured section), highlight "All"
       if (window.scrollY < 350) {
         setActiveCategory("All");
         return;
@@ -78,7 +78,7 @@ export function GalleryPage() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [allPublishedEvents]);
 
-  // Category pill click handler: smoothly scroll to that category section without hiding other categories
+  // Category pill click handler
   const handleCategoryClick = (category: string) => {
     setActiveCategory(category);
 
@@ -120,35 +120,38 @@ export function GalleryPage() {
 
   return (
     <div className="bg-[#050505] text-[#F5F5F5] antialiased min-h-screen">
-      {/* ─── 1. HERO SECTION ─── */}
+      {/* ─── 1. GALLERY HERO SECTION (DARK #050505) ─── */}
       <section className="relative isolate overflow-hidden bg-[#050505] text-white py-16 sm:py-20 lg:py-24 border-b border-[#27272A]">
         {heroCoverImage && (
           <img
             src={heroCoverImage}
             alt="MIEUX Display Exhibition"
-            className="absolute inset-0 h-full w-full object-cover opacity-20 pointer-events-none"
+            className="absolute inset-0 h-full w-full object-cover opacity-15 pointer-events-none"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/85 to-[#050505]/60 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(155,27,158,0.06),transparent)] pointer-events-none" aria-hidden />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/90 to-[#050505]/70 pointer-events-none" />
+        <div
+          className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(155,27,158,0.08),transparent)] pointer-events-none"
+          aria-hidden
+        />
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10 text-center sm:text-left">
           <Reveal>
-            <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#FF6B00]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#27272A] bg-[#151518] px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-[#FF6B00] backdrop-blur-md mb-3">
               MIEUX DISPLAY • EVENTS & EXPERIENCES
             </span>
-            <h1 className="mt-2 font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Where MIEUX Comes to Life
+            <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]">
+              Where MIEUX <span className="text-[#9B1B9E]">Comes to Life</span>
             </h1>
-            <p className="mt-4 max-w-2xl text-base text-[#A1A1AA] sm:text-lg leading-relaxed">
+            <p className="mt-4 max-w-2xl text-base text-[#A1A1AA] sm:text-lg leading-relaxed font-medium">
               Explore MIEUX installations, exhibitions, industry events and real-world display experiences across India.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* ─── 2. CATEGORY FILTERS (STICKY SPY NAVIGATION) ─── */}
-      <section className="sticky top-[96px] z-40 border-b border-[#27272A] bg-[#050505]/95 backdrop-blur-md py-4 shadow-2xl text-white">
+      {/* ─── 2. CATEGORY FILTERS (STICKY STYLED BAR) ─── */}
+      <section className="sticky top-[96px] sm:top-[100px] z-40 border-b border-[#27272A] bg-[#050505]/95 backdrop-blur-md py-4 shadow-2xl text-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-0.5">
             {categoryFilters.map((category) => {
@@ -157,7 +160,7 @@ export function GalleryPage() {
                 <button
                   key={category}
                   onClick={() => handleCategoryClick(category)}
-                  className={`shrink-0 rounded-full px-5 py-2 text-xs font-bold transition-all duration-300 ${
+                  className={`shrink-0 rounded-full px-4.5 py-2 text-xs font-bold transition-all duration-300 ${
                     isActive
                       ? "bg-[#9B1B9E] text-white shadow-md scale-[1.02]"
                       : "border border-[#27272A] bg-[#151518] text-[#A1A1AA] hover:border-[#9B1B9E] hover:text-white"
@@ -171,31 +174,37 @@ export function GalleryPage() {
         </div>
       </section>
 
-      {/* ─── 3. FEATURED MOMENTS CAROUSEL ─── */}
-      <section className="bg-[#0D0D0F] py-16 lg:py-20 border-b border-[#27272A]">
+      {/* ─── 3. MOMENTS WORTH REMEMBERING (LIGHT SECTION bg-[#F7F7F5]) ─── */}
+      <section className="bg-[#F7F7F5] text-[#0D0D0F] py-14 lg:py-20 border-b border-[#E4E4E7]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <SectionHeading
-              align="left"
-              dark
-              eyebrow="FEATURED MOMENTS"
-              title="Moments Worth Remembering"
-              subtitle="A glimpse into MIEUX displays, installations and experiences."
-            />
+          
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#9B1B9E]/30 bg-[#9B1B9E]/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#9B1B9E]">
+                GALLERY HIGHLIGHTS
+              </span>
+              <h2 className="mt-2.5 font-display text-3xl font-extrabold text-[#0D0D0F] sm:text-4xl tracking-tight">
+                Moments Worth <span className="text-[#9B1B9E]">Remembering</span>
+              </h2>
+              <p className="mt-1.5 text-xs sm:text-sm text-[#52525B] max-w-xl font-medium">
+                A glimpse into MIEUX displays, installations and experiences.
+              </p>
+            </div>
 
-            {/* Circular Carousel Controls */}
-            <div className="hidden sm:flex items-center gap-2">
+            {/* Circular Controls */}
+            <div className="hidden sm:flex items-center gap-2 shrink-0">
               <button
                 onClick={() => scrollFeatured("left")}
                 aria-label="Previous featured moments"
-                className="grid h-10 w-10 place-items-center rounded-full border border-[#27272A] bg-[#151518] text-white transition-all hover:border-[#9B1B9E] hover:bg-[#9B1B9E]"
+                className="grid h-10 w-10 place-items-center rounded-full border border-[#E4E4E7] bg-white text-[#0D0D0F] shadow-sm transition-all hover:border-[#9B1B9E] hover:text-[#9B1B9E]"
               >
                 <ChevronLeft className="h-4 w-4" />
               </button>
               <button
                 onClick={() => scrollFeatured("right")}
                 aria-label="Next featured moments"
-                className="grid h-10 w-10 place-items-center rounded-full border border-[#27272A] bg-[#151518] text-white transition-all hover:border-[#9B1B9E] hover:bg-[#9B1B9E]"
+                className="grid h-10 w-10 place-items-center rounded-full border border-[#E4E4E7] bg-white text-[#0D0D0F] shadow-sm transition-all hover:border-[#9B1B9E] hover:text-[#9B1B9E]"
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -206,37 +215,39 @@ export function GalleryPage() {
         {/* Featured Moments Horizontal Track */}
         <div
           ref={featuredCarouselRef}
-          className="mt-8 w-full overflow-x-auto py-4 pb-6 no-scrollbar relative z-10 scroll-smooth"
+          className="w-full overflow-x-auto py-2 pb-4 no-scrollbar relative z-10 scroll-smooth"
         >
           <div className="flex w-max gap-5 px-4 sm:px-6 lg:px-8 xl:px-12">
             {featuredMoments.map((item, idx) => (
-              <Reveal key={`${item.eventId}-${idx}`} delay={idx * 0.05}>
+              <Reveal key={`${item.eventId}-${idx}`} delay={idx * 0.04}>
                 <div
                   onClick={() => handleOpenLightbox(item.eventId, item.photoIndex)}
-                  className="group relative flex flex-col justify-end overflow-hidden rounded-[18px] border border-[#27272A] bg-[#151518] shadow-2xl transition-all duration-300 hover:-translate-y-1 hover:border-[#9B1B9E]/60 cursor-pointer aspect-[4/3] w-[260px] sm:w-[300px] lg:w-[320px] shrink-0"
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-[20px] border border-[#E4E4E7] bg-white p-3.5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#9B1B9E] hover:shadow-xl cursor-pointer w-[270px] sm:w-[310px] lg:w-[330px] shrink-0"
                 >
-                  <img
-                    src={item.photo.url}
-                    alt={item.photo.alt || item.eventTitle}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:brightness-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/90 via-[#050505]/30 to-transparent" />
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-slate-100 mb-3">
+                    <img
+                      src={item.photo.url}
+                      alt={item.photo.alt || item.eventTitle}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
 
-                  <div className="relative z-10 p-5">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF6B00]">
+                  <div>
+                    <span className="text-[10.5px] font-bold uppercase tracking-wider text-[#FF6B00]">
                       {item.eventTitle}
                     </span>
-                    <p className="mt-1 text-xs text-[#A1A1AA] line-clamp-1 font-medium">
+                    <p className="mt-1 text-xs text-[#52525B] line-clamp-1 font-medium">
                       {item.photo.alt}
                     </p>
-                    <div className="mt-3 flex items-center justify-between text-xs font-bold text-[#9B1B9E] border-t border-[#27272A] pt-2.5">
-                      <span className="flex items-center gap-1.5">
-                        <Camera className="h-3.5 w-3.5" />
-                        View Photo
-                      </span>
-                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </div>
+                  </div>
+
+                  <div className="mt-3 flex items-center justify-between text-xs font-bold text-[#9B1B9E] border-t border-[#E4E4E7] pt-2.5">
+                    <span className="flex items-center gap-1.5">
+                      <Camera className="h-3.5 w-3.5 text-[#9B1B9E]" />
+                      View Photo
+                    </span>
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-0.5" />
                   </div>
                 </div>
               </Reveal>
@@ -245,7 +256,7 @@ export function GalleryPage() {
         </div>
       </section>
 
-      {/* ─── 4. ALL EVENT CATEGORY SECTIONS (ALWAYS RENDERED IN FULL) ─── */}
+      {/* ─── 4. ALTERNATING EVENT CATEGORY SECTIONS ─── */}
       <div className="min-h-[50vh]">
         {allPublishedEvents.map((event, index) => (
           <EventGalleryCard
@@ -257,32 +268,9 @@ export function GalleryPage() {
         ))}
       </div>
 
-      {/* ─── 5. BOTTOM CTA ─── */}
-      <section className="bg-[#0D0D0F] text-[#F5F5F5] py-16 sm:py-20 border-t border-[#27272A]">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 text-center">
-          <Reveal>
-            <h2 className="font-display text-3xl font-extrabold text-white sm:text-4xl">
-              Let's Create Something Worth Seeing.
-            </h2>
-            <p className="mt-3 text-sm text-[#A1A1AA] sm:text-base">
-              Talk to our team about your next display project.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#9B1B9E] px-7 py-3.5 text-xs font-bold text-white shadow-md transition-all hover:bg-[#B52CB8] hover:-translate-y-0.5"
-              >
-                Request a Quote <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/products"
-                className="inline-flex items-center gap-2 rounded-xl border border-[#27272A] bg-[#151518] px-7 py-3.5 text-xs font-semibold text-white backdrop-blur transition-all hover:border-[#9B1B9E] hover:bg-[#1D1D21]"
-              >
-                Explore Products →
-              </Link>
-            </div>
-          </Reveal>
-        </div>
+      {/* ─── 5. FINAL CTA (DARK #050505) ─── */}
+      <section className="bg-[#050505] text-[#F5F5F5] border-t border-[#27272A]">
+        <CtaSection />
       </section>
 
       {/* ─── 6. REUSABLE LIGHTBOX ─── */}

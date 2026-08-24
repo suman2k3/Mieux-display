@@ -36,59 +36,29 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#050505] text-[#A1A1AA] border-t border-[#27272A]">
+    <footer className="bg-[#F7F7F5] text-[#0D0D0F] border-t border-[#E4E4E7]">
       {/* MAIN FOOTER CONTENT */}
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-          {/* COLUMN 1: LOGO, DESCR, COMPACT NEWSLETTER, SOCIALS */}
-          <div>
-            <div className="inline-block rounded-2xl bg-white p-3.5 shadow-md">
-              <img src={logoImg} alt="MIEUX DISPLAY" className="h-14 w-auto sm:h-16 object-contain" />
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+          {/* COLUMN 1: LOGO & DESCR */}
+          <div className="lg:col-span-1">
+            <div className="inline-block rounded-2xl bg-white p-3 shadow-md border border-[#E4E4E7]">
+              <img src={logoImg} alt="MIEUX DISPLAY" className="h-12 w-auto object-contain" />
             </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#A1A1AA]">
-              Enterprise LED, interactive and digital signage solutions — engineered, installed and
-              supported across India.
+            <p className="mt-4 text-xs leading-relaxed text-[#52525B] font-medium">
+              Enterprise LED, interactive and digital signage solutions — engineered, installed and supported across India.
             </p>
 
-            {/* COMPACT NEWSLETTER OPTION BELOW LOGO */}
-            <div className="mt-5 max-w-xs">
-              <p className="text-xs font-semibold uppercase tracking-wider text-white mb-2">
-                Subscribe to Newsletter
-              </p>
-              {subscribed ? (
-                <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-semibold">
-                  <CheckCircle2 className="h-4 w-4" /> Subscribed to updates!
-                </div>
-              ) : (
-                <form onSubmit={handleSubscribe} className="flex gap-2">
-                  <input
-                    type="email"
-                    required
-                    placeholder="Enter work email..."
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-lg border border-[#27272A] bg-[#0D0D0F] px-3 py-2 text-xs text-white placeholder-[#71717A] focus:border-[#9B1B9E] focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    className="shrink-0 rounded-lg bg-[#9B1B9E] hover:bg-[#B52CB8] px-3.5 py-2 text-xs font-bold text-white shadow-sm transition-all hover:scale-105"
-                  >
-                    Subscribe
-                  </button>
-                </form>
-              )}
-            </div>
-
             {/* SOCIAL ICONS */}
-            <div className="mt-6 flex gap-3">
+            <div className="mt-5 flex gap-2">
               {socials.map(({ path, label }) => (
                 <a
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="grid h-10 w-10 place-items-center rounded-xl border border-[#27272A] bg-[#151518] text-[#A1A1AA] transition-colors hover:border-[#9B1B9E] hover:text-[#9B1B9E]"
+                  className="grid h-8 w-8 place-items-center rounded-lg border border-[#E4E4E7] bg-white text-[#52525B] shadow-sm transition-all hover:border-[#9B1B9E] hover:text-[#9B1B9E] hover:scale-105"
                 >
-                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-3.5 w-3.5" aria-hidden>
                     <path d={path} />
                   </svg>
                 </a>
@@ -96,70 +66,83 @@ export function Footer() {
             </div>
           </div>
 
+          {/* COLUMN 2: COMPANY */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">Company</h3>
-            <ul className="mt-5 space-y-3 text-sm">
+            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#0D0D0F]">Company</h3>
+            <ul className="mt-4 space-y-2.5 text-xs font-medium">
               {[
                 { label: "About Us", to: "/about" },
-                { label: "Solutions", to: "/solutions" },
-                { label: "Products", to: "/products" },
-                { label: "Gallery", to: "/gallery" },
-                { label: "Contact", to: "/contact" },
+                { label: "Careers", to: "/about" },
+                { label: "Blog", to: "/about" },
+                { label: "Media", to: "/gallery" },
+                { label: "Contact Us", to: "/contact" },
               ].map((l) => (
                 <li key={l.label}>
-                  <Link to={l.to} className="transition-colors text-[#A1A1AA] hover:text-[#B52CB8]">
+                  <Link to={l.to} className="transition-colors text-[#52525B] hover:text-[#9B1B9E]">
                     {l.label}
                   </Link>
                 </li>
               ))}
-              <li><Link to="/privacy" className="transition-colors text-[#A1A1AA] hover:text-[#B52CB8]">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="transition-colors text-[#A1A1AA] hover:text-[#B52CB8]">Terms of Use</Link></li>
             </ul>
           </div>
 
+          {/* COLUMN 3: SOLUTIONS */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">Explore</h3>
-            <ul className="mt-5 space-y-3 text-sm">
+            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#0D0D0F]">Solutions</h3>
+            <ul className="mt-4 space-y-2.5 text-xs font-medium">
+              {solutions.map((s) => (
+                <li key={s.slug}>
+                  <Link to="/solutions" className="transition-colors text-[#52525B] hover:text-[#9B1B9E]">
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* COLUMN 4: PRODUCTS */}
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#0D0D0F]">Products</h3>
+            <ul className="mt-4 space-y-2.5 text-xs font-medium">
               {products.slice(0, 5).map((p) => (
                 <li key={p.slug}>
-                  <Link to={`/products/${p.slug}`} className="transition-colors text-[#A1A1AA] hover:text-[#B52CB8]">
+                  <Link to={`/products/${p.slug}`} className="transition-colors text-[#52525B] hover:text-[#9B1B9E]">
                     {p.name}
                   </Link>
                 </li>
               ))}
-              {solutions.slice(0, 2).map((s) => (
-                <li key={s.slug}>
-                  <Link to={`/solutions/${s.slug}`} className="transition-colors text-[#A1A1AA] hover:text-[#B52CB8]">
-                    {s.title} Solutions
-                  </Link>
-                </li>
-              ))}
             </ul>
           </div>
 
+          {/* COLUMN 5: CONTACT US */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-white">Contact</h3>
-            <ul className="mt-5 space-y-4 text-sm">
-              <li className="flex gap-3">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-[#9B1B9E]" />
-                <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="hover:text-white">{company.phone}</a>
+            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[#0D0D0F]">Contact Us</h3>
+            <ul className="mt-4 space-y-3 text-xs font-medium">
+              <li className="flex gap-2.5">
+                <Phone className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#9B1B9E]" />
+                <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="text-[#52525B] hover:text-[#0D0D0F]">{company.phone}</a>
               </li>
-              <li className="flex gap-3">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-[#9B1B9E]" />
-                <a href={`mailto:${company.email}`} className="hover:text-white">{company.email}</a>
+              <li className="flex gap-2.5">
+                <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#9B1B9E]" />
+                <a href={`mailto:${company.email}`} className="text-[#52525B] hover:text-[#0D0D0F] truncate">{company.email}</a>
               </li>
-              <li className="flex gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#9B1B9E]" />
-                <span>{company.address}</span>
+              <li className="flex gap-2.5">
+                <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#9B1B9E]" />
+                <span className="text-[#52525B]">{company.address}</span>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-[#27272A]">
-        <div className="mx-auto max-w-7xl px-4 py-6 text-center text-xs text-[#71717A] sm:px-6">
-          © 2026 {company.name}. All Rights Reserved.
+      <div className="border-t border-[#E4E4E7] bg-[#EAEAEA]/50">
+        <div className="mx-auto max-w-7xl px-4 py-5 flex flex-col sm:flex-row items-center justify-between text-xs text-[#71717A] sm:px-6 gap-2">
+          <span>© 2026 {company.name}. All Rights Reserved.</span>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy" className="hover:text-[#0D0D0F] transition-colors">Privacy Policy</Link>
+            <span>•</span>
+            <Link to="/terms" className="hover:text-[#0D0D0F] transition-colors">Terms of Use</Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -109,6 +109,7 @@ export const megaProducts: MegaProductItem[] = [
     category: "indoor-led",
     filterTag: ["COB LED", "Fine Pitch"],
     image: img.indoorLed,
+    slug: "indoor-led-display",
     badge: "Micro COB",
   },
   {
@@ -200,7 +201,17 @@ export const megaProducts: MegaProductItem[] = [
     badge: "Fast Lock",
   },
 
-  // Interactive Flat Panel
+  // Interactive Flat Panel & Podiums
+  {
+    id: "digital-podium",
+    name: "Mieux Digital Podium",
+    tagline: "Speak. Present. Impress.",
+    category: "interactive-panel",
+    filterTag: ["All Series"],
+    image: img.digitalPodium,
+    slug: "digital-podium",
+    badge: "New Release",
+  },
   {
     id: "vision-pro",
     name: "Vision Pro",

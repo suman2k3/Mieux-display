@@ -1,5 +1,5 @@
 import heroVideoWall from "@/assets/hero-videowall.jpg";
-import heroIfp from "@/assets/hero-ifp.jpg";
+import heroIfp from "@/assets/hero-ifp.png";
 import heroOutdoor from "@/assets/hero-outdoor.jpg";
 import controlRoom from "@/assets/control-room.jpg";
 import signage from "@/assets/signage.jpg";
@@ -8,6 +8,58 @@ import transparentLed from "@/assets/transparent-led.jpg";
 import corporate from "@/assets/corporate.jpg";
 import kiosk from "@/assets/kiosk.jpg";
 import indoorLed from "@/assets/indoor-led.jpg";
+import solutionEducation from "@/assets/solution-education.png";
+import solutionCorporate from "@/assets/solution-corporate.png";
+import solutionGovernment from "@/assets/solution-government.png";
+import solutionBanking from "@/assets/solution-banking.png";
+import solutionHospitality from "@/assets/solution-hospitality.png";
+import digitalStandeeBanners from "@/assets/digital-standee-banners.png";
+import ptzCamera from "@/assets/ptz-camera.png";
+import opsPc from "@/assets/ops-pc.png";
+import mieuxShiksha from "@/assets/mieux-shiksha.png";
+import environmentalDesign from "@/assets/environmental-design.jpg";
+import digitalPodium from "@/assets/digital-podium.png";
+import logoUnilever from "@/assets/logo-unilever.png";
+import logoKvs from "@/assets/logo-kvs.png";
+import logoAai from "@/assets/logo-aai.png";
+import logoBsf from "@/assets/logo-bsf.png";
+import logoIndianArmy from "@/assets/logo-indian-army.png";
+import logoDrdo from "@/assets/logo-drdo.png";
+import logoOngc from "@/assets/logo-ongc.png";
+import logoAvani from "@/assets/logo-avani.png";
+import logoAdda247 from "@/assets/logo-adda247.png";
+import logoBel from "@/assets/logo-bel.png";
+import logoAiims from "@/assets/logo-aiims.png";
+import logoIaf from "@/assets/logo-iaf.png";
+import logoIitIndore from "@/assets/logo-iit-indore.png";
+import logoPnbGilts from "@/assets/logo-pnb-gilts.png";
+import logoIndianOil from "@/assets/logo-indianoil.png";
+import logoNdtv from "@/assets/logo-ndtv.png";
+import logoOptel from "@/assets/logo-optel.png";
+import logoRozanaSpokesman from "@/assets/logo-rozana-spokesman.png";
+import logoBharatPetroleum from "@/assets/logo-bharat-petroleum.png";
+
+export const clientLogos = [
+  { name: "Unilever", logo: logoUnilever },
+  { name: "Kendriya Vidyalaya Sangathan", logo: logoKvs },
+  { name: "Airports Authority of India", logo: logoAai },
+  { name: "Border Security Force", logo: logoBsf },
+  { name: "Indian Army", logo: logoIndianArmy },
+  { name: "DRDO", logo: logoDrdo },
+  { name: "ONGC", logo: logoOngc },
+  { name: "AVANI Armoured Vehicles", logo: logoAvani },
+  { name: "Adda247", logo: logoAdda247 },
+  { name: "Bharat Electronics Limited", logo: logoBel },
+  { name: "AIIMS", logo: logoAiims },
+  { name: "Indian Air Force", logo: logoIaf },
+  { name: "IIT Indore", logo: logoIitIndore },
+  { name: "PNB Gilts", logo: logoPnbGilts },
+  { name: "IndianOil", logo: logoIndianOil },
+  { name: "NDTV", logo: logoNdtv },
+  { name: "OPTEL", logo: logoOptel },
+  { name: "Rozana Spokesman", logo: logoRozanaSpokesman },
+  { name: "Bharat Petroleum", logo: logoBharatPetroleum },
+];
 
 export const img = {
   heroVideoWall,
@@ -20,6 +72,36 @@ export const img = {
   corporate,
   kiosk,
   indoorLed,
+  solutionEducation,
+  solutionCorporate,
+  solutionGovernment,
+  solutionBanking,
+  solutionHospitality,
+  digitalStandeeBanners,
+  ptzCamera,
+  opsPc,
+  mieuxShiksha,
+  environmentalDesign,
+  digitalPodium,
+  logoUnilever,
+  logoKvs,
+  logoAai,
+  logoBsf,
+  logoIndianArmy,
+  logoDrdo,
+  logoOngc,
+  logoAvani,
+  logoAdda247,
+  logoBel,
+  logoAiims,
+  logoIaf,
+  logoIitIndore,
+  logoPnbGilts,
+  logoIndianOil,
+  logoNdtv,
+  logoOptel,
+  logoRozanaSpokesman,
+  logoBharatPetroleum,
 };
 
 export const company = {
@@ -42,143 +124,146 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    slug: "indoor-led-display",
-    name: "Indoor LED Display",
-    tagline: "Fine-pitch brilliance for interiors",
-    description:
-      "Seamless fine-pitch LED walls from P0.9 to P2.5 engineered for lobbies, auditoriums and command centres.",
+    slug: "spectra-s1",
+    name: "LED Video Wall",
+    tagline: "Brilliant. Bold. Boundless.",
+    description: "Transform any space with ultra-bright visuals, seamless panel integration, and stunning high-definition clarity. Designed for control rooms, corporate spaces, retail, and large venues, Mieux LED Video Walls deliver impactful performance with unmatched reliability.",
     image: indoorLed,
-    specs: ["Pixel pitch P0.9 – P2.5", "1000 nits brightness", "3840Hz refresh rate", "Front & rear service"],
+    specs: ["Pixel pitch P0.9 – P1.2", "1200 nits brightness", "3840Hz refresh rate", "Front Magnet Access"],
     features: [
-      { title: "Seamless canvas", body: "Bezel-free modular cabinets deliver a single uninterrupted image at any scale." },
-      { title: "Colour accuracy", body: "16-bit processing and factory calibration keep greyscale consistent for years." },
-      { title: "Silent operation", body: "Fanless cabinets rated below 30dB for boardrooms and studios." },
+      { title: "Seamless Canvas", body: "Bezel-free modular cabinets deliver a single uninterrupted image at any scale." },
+      { title: "Colour Accuracy", body: "16-bit processing and factory calibration keep greyscale consistent for years." },
+      { title: "Silent Operation", body: "Fanless cabinets rated below 30dB for boardrooms and studios." },
     ],
   },
   {
-    slug: "outdoor-led-display",
-    name: "Outdoor LED Display",
-    tagline: "Built for sunlight and storms",
-    description:
-      "IP65-rated high-brightness LED billboards and facade screens designed for 24x7 operation in Indian climates.",
-    image: heroOutdoor,
-    specs: ["Up to 8000 nits", "IP65 front & rear", "P3 – P10 pitch", "Auto brightness sensor"],
+    slug: "aura-pro",
+    name: "Digital Kiosk",
+    tagline: "Engage smarter. Display better.",
+    description: "The Digital Kiosk delivers stunning Full HD visuals with interactive touch, remote content management, and a sleek, space-saving design. Perfect for retail, hospitality, and corporate spaces - it helps you connect with your audience effortlessly.",
+    image: kiosk,
+    specs: ["Pixel pitch P0.7 – P1.2", "1000 nits brightness", "15,000:1 contrast", "Vacuum Front Access"],
     features: [
-      { title: "All-weather build", body: "Die-cast aluminium cabinets with sealed masks survive monsoon and dust." },
-      { title: "Power efficient", body: "Common-cathode drive reduces consumption by up to 30%." },
-      { title: "Remote control", body: "Cloud publishing with scheduling, monitoring and fault alerts." },
+      { title: "Rugged COB Surface", body: "IP54 front dust and moisture-resistant surface protection." },
+      { title: "Deep Black Levels", body: "Ultra-high 15,000:1 contrast ratio with true black background." },
+      { title: "Energy Efficient", body: "Flip-chip common cathode driver reduces thermal dissipation." },
     ],
   },
   {
-    slug: "interactive-flat-panel",
+    slug: "lumina-outdoor",
     name: "Interactive Flat Panel",
-    tagline: "Collaboration that feels natural",
-    description:
-      "4K multi-touch panels with built-in whiteboarding, wireless casting and Android + Windows OPS options.",
-    image: heroIfp,
-    specs: ["65\" / 75\" / 86\" / 98\"", "40-point multi-touch", "4K UHD anti-glare", "Android 13 + OPS slot"],
+    tagline: "Touch. Teach. Transform.",
+    description: "Experience smarter teaching and seamless collaboration with Interactive Flat Panels. Designed for modern classrooms and meeting spaces, it delivers crisp visuals, smooth multi-touch interaction, and powerful performance—making presentations engaging and learning truly interactive.",
+    image: heroOutdoor,
+    specs: ["8000 nits brightness", "IP65 Front & Rear", "P3.9 – P10.0 pitch", "Dual Front/Rear Access"],
     features: [
-      { title: "Zero-lag writing", body: "Sub-8ms pen latency with palm rejection for natural annotation." },
-      { title: "Wireless casting", body: "Share from any laptop or phone with up to 9 simultaneous sources." },
-      { title: "Device management", body: "Fleet-wide firmware, policy and content management from one console." },
+      { title: "All-Weather Build", body: "Die-cast aluminium cabinets with sealed masks survive monsoon and dust." },
+      { title: "Sunlight Readable", body: "Ultra-high 8,000 nits brightness remains vivid under direct noon sunlight." },
+      { title: "Remote Cloud CMS", body: "Cloud publishing with scheduling, monitoring and automated fault alerts." },
+    ],
+  },
+  {
+    slug: "visionwall-4k",
+    name: "Commercial Display",
+    tagline: "Engage. Enhance. Elevate.",
+    description: "Experience stunning picture quality and powerful audio with large format displays designed for open spaces, delivering a truly immersive viewing experience.",
+    image: signage,
+    specs: ["0.88mm combined bezel", "700 nits Anti-Glare", "24/7 Duty Rating", "DisplayPort 4K Loop"],
+    features: [
+      { title: "Ultra-Slim Bezel", body: "0.88mm bezel-to-bezel delivers virtually seamless video wall canvases." },
+      { title: "24/7 Reliability", body: "Commercial IPS panel rated for continuous 24/7/365 operation." },
+      { title: "Precision Mounting", body: "Micro-adjust push-to-open wall mounts ensure zero-gap alignment." },
+    ],
+  },
+  {
+    slug: "interactive-pro",
+    name: "Accessories",
+    tagline: "Complete Your Setup with Accessories",
+    description: "We offer a wide range of high-quality accessories designed to enhance the performance of your digital solutions. From OPS and Floor Stands to Sliding Shutters and Mounts, each accessory ensures seamless integration and reliable performance.",
+    image: heroIfp,
+    specs: ['65" / 75" / 86" / 98"', "40-Point Touch", "< 8ms Pen Response", "Android 13 + OPS Slot"],
+    features: [
+      { title: "Zero-Lag Writing", body: "Sub-8ms pen response latency with palm rejection for fluid annotation." },
+      { title: "Wireless Casting", body: "Share from any laptop, tablet or phone with up to 9 screen split share." },
+      { title: "Zero-Gap Bonding", body: "Optical bonding eliminates parallax for paper-like touch writing." },
+    ],
+  },
+  {
+    slug: "controlview",
+    name: "LCD Video Wall",
+    tagline: "Seamless Large-Format Display Performance",
+    description: "The LCD Video Wall delivers seamless large-format displays with ultra-clear visuals and powerful performance. Designed for control rooms, corporate spaces, retail, and public environments - it ensures your message stands out with clarity and confidence.",
+    image: controlRoom,
+    specs: ["P0.9 – P1.5 mm", "800 nits Low Blue Light", "Dual Redundancy", "KVM Multi-Canvas"],
+    features: [
+      { title: "Zero Downtime", body: "Dual power supplies and redundant signal loops prevent blackouts." },
+      { title: "Hot-Swappable", body: "Replace LED modules and power units without interrupting live feeds." },
+      { title: "KVM Integration", body: "Control multiple workstations and IP cameras on a single wall canvas." },
     ],
   },
   {
     slug: "commercial-display",
     name: "Commercial Display",
-    tagline: "24x7 professional panels",
-    description:
-      "Industrial-grade commercial displays for retail, hospitality and corporate environments with 24x7 duty rating.",
-    image: signage,
-    specs: ["43\" – 98\" sizes", "500 nits typical", "24x7 duty cycle", "Portrait & landscape"],
+    tagline: "Engage. Enhance. Elevate.",
+    description: "Experience stunning picture quality and powerful audio with large format displays designed for open spaces, delivering a truly immersive viewing experience.",
+    image: digitalStandeeBanners,
+    specs: ['43" / 49" / 55" / 65"', "500–700 nits", "24/7 Commercial Rating", "Plug & Play / Cloud CMS"],
     features: [
-      { title: "Always on", body: "Thermal design certified for continuous operation with 3-year warranty." },
-      { title: "Built-in player", body: "System-on-chip signage player removes external media boxes." },
-      { title: "Slim mounting", body: "Sub-30mm depth for flush architectural installations." },
+      { title: "Plug & Play Media", body: "Auto-loop USB video playback or cloud remote management." },
+      { title: "Sturdy Enclosure", body: "Powder-coated steel chassis with 4mm shatter-proof tempered glass." },
+      { title: "Interactive Touch", body: "Optional 10-point PCAP touch screen for self-service navigation." },
     ],
   },
   {
-    slug: "lcd-video-wall",
-    name: "LCD Video Wall",
-    tagline: "Ultra-narrow bezel arrays",
-    description:
-      "0.88mm bezel-to-bezel LCD video walls for control rooms, network operations and corporate lobbies.",
-    image: corporate,
-    specs: ["0.88mm combined bezel", "700 nits", "Daisy-chain DP loop", "Any m x n layout"],
+    slug: "ptz-camera",
+    name: "PTZ Camera",
+    tagline: "Pan. Tilt. Zoom.",
+    description: "Capture every moment with intelligent auto-tracking, ultra-smooth PTZ control, and stunning 4K clarity. Perfect for classrooms, boardrooms, and hybrid spaces.",
+    image: ptzCamera,
+    specs: ["4K UHD @ 60fps", "12x Optical Zoom", "AI Presenter Tracking", "HDMI, USB 3.0 & IP"],
     features: [
-      { title: "Precision alignment", body: "Micro-adjust mounts deliver perfect grid geometry on site." },
-      { title: "Multi-source", body: "Show up to 16 sources across the wall with a video wall processor." },
-      { title: "Redundancy", body: "Dual power and looping inputs keep critical walls alive." },
+      { title: "AI Speaker Tracking", body: "Auto-frames active speakers and tracks presenters smooth across the room." },
+      { title: "Sony 4K Sensor", body: "Ultra-crisp 4K optics with 12x optical zoom for large conference rooms." },
+      { title: "Universal Connect", body: "Seamless USB 3.0 plug-and-play with Zoom, Teams, and Webex." },
     ],
   },
   {
-    slug: "digital-signage",
-    name: "Digital Signage",
-    tagline: "Content that converts",
-    description:
-      "End-to-end signage: players, CMS, screens and analytics for multi-store and multi-city networks.",
-    image: signage,
-    specs: ["Cloud CMS", "Multi-zone layouts", "Offline playback", "Proof-of-play reports"],
+    slug: "ops-pc",
+    name: "OPS Module",
+    tagline: "Compact. Powerful. Integrated.",
+    description: "Enhance your display performance with plug-and-play computing, fast processing, and seamless multitasking all without extra wires or complexity.",
+    image: opsPc,
+    specs: ["Intel Core i7-1255U", "16GB DDR4 RAM", "512GB NVMe M.2 SSD", "Standard 80-Pin OPS"],
     features: [
-      { title: "Central control", body: "Publish to thousands of screens by store, region or format." },
-      { title: "Dynamic data", body: "Feed pricing, queue, weather and API data straight into layouts." },
-      { title: "Audience insight", body: "Optional anonymous analytics measure dwell and impressions." },
+      { title: "Slot-in Convenience", body: "Standard 80-pin OPS slot slides cleanly into IFPDs without cables." },
+      { title: "Windows 11 Pro", body: "Full desktop PC capability for running high-demand 3D applications." },
+      { title: "Dual-Band Wi-Fi 6", body: "Fast wireless connectivity and Bluetooth 5.2 peripheral support." },
     ],
   },
   {
-    slug: "touch-kiosk",
-    name: "Touch Kiosk",
-    tagline: "Self-service, simplified",
-    description:
-      "Free-standing and wall-mount interactive kiosks for wayfinding, ticketing, check-in and ordering.",
-    image: kiosk,
-    specs: ["32\" – 55\" touch", "PCAP 10-point", "Optional printer & scanner", "Custom branding"],
+    slug: "mieux-shiksha",
+    name: "Shiksha Software",
+    tagline: "Learn. Grow. Succeed.",
+    description: "Innovative display and digital learning solutions designed to enhance teaching, engagement, and collaboration in modern educational environments.",
+    image: mieuxShiksha,
+    specs: ["K-12 CBSE / ICSE", "Multilingual Support", "3D Virtual Science Lab", "Full Offline License"],
     features: [
-      { title: "Rugged enclosure", body: "Powder-coated steel body built for high-footfall public spaces." },
-      { title: "Peripheral ready", body: "Integrate payment, QR, printer and RFID modules." },
-      { title: "Accessible", body: "Ergonomic heights and audio guidance options." },
+      { title: "Interactive Subjects", body: "Mathematics, EVS, Science, English, Art, Rhymes & Special Learning Zone." },
+      { title: "Cross-Platform", body: "Runs on MIEUX IFPDs, Windows, Android, and iOS mobile apps." },
+      { title: "Offline Encrypted", body: "Full offline playback support without requiring active internet connection." },
     ],
   },
   {
-    slug: "control-room-display",
-    name: "Control Room Display",
-    tagline: "Mission-critical visualisation",
-    description:
-      "Fine-pitch LED and LCD walls with redundant processing for 24x7 command, security and utility centres.",
-    image: controlRoom,
-    specs: ["24x7 rated", "Redundant processors", "KVM integration", "Low blue light"],
+    slug: "digital-podium",
+    name: "Digital Podium",
+    tagline: "Speak. Present. Impress.",
+    description: "Elevate presentations with the Mieux Ultra and Slim Digital Podium. Designed for modern classrooms, conference halls, and auditoriums, it features an inbuilt touch screen monitor, integrated gooseneck microphone, and multiple connectivity options delivering seamless control, clear communication, and a professional presentation experience every time.",
+    image: digitalPodium,
+    specs: ['21.5" FHD / 4K Touch', "Dual Gooseneck Mic", "Motorized Angle Tilt", "OPS Slot & Audio Out"],
     features: [
-      { title: "Zero downtime", body: "Hot-swappable modules and dual power paths for critical uptime." },
-      { title: "Operator comfort", body: "Low-flicker, low blue-light tuning for long shifts." },
-      { title: "Any source", body: "IP, SDI, HDMI and KVM streams on one managed canvas." },
-    ],
-  },
-  {
-    slug: "video-conference-display",
-    name: "Video Conference Display",
-    tagline: "Hybrid meetings, solved",
-    description:
-      "All-in-one meeting displays with 4K camera, beamforming mics and native Teams / Zoom certification.",
-    image: heroIfp,
-    specs: ["4K AI camera", "8-mic array", "Teams / Zoom certified", "One-cable connect"],
-    features: [
-      { title: "Auto framing", body: "AI tracks speakers and frames the room automatically." },
-      { title: "Clear audio", body: "Beamforming mics with echo and noise suppression." },
-      { title: "One touch join", body: "Start a scheduled call from the display in a single tap." },
-    ],
-  },
-  {
-    slug: "transparent-led",
-    name: "Transparent LED",
-    tagline: "Glass that comes alive",
-    description:
-      "Up to 90% transparent LED film and grid screens for storefronts, atriums and experience centres.",
-    image: transparentLed,
-    specs: ["Up to 90% transparency", "P3.9 – P15.6", "4500 nits", "Lightweight 12kg/m²"],
-    features: [
-      { title: "Keeps the daylight", body: "High transparency preserves the view and natural light." },
-      { title: "Featherweight", body: "Low-load design mounts directly on existing glazing." },
-      { title: "Showstopper", body: "Floating visuals that stop footfall at the window." },
+      { title: "Inbuilt Interactive Touch", body: "High-precision PCAP touch screen with zero-lag digital annotation." },
+      { title: "Gooseneck Microphones", body: "Dual crystal-clear noise-canceling gooseneck microphones." },
+      { title: "Universal Connectivity", body: "HDMI, USB, XLR Mic Out, LAN, and wireless screen casting." },
     ],
   },
 ];
@@ -198,8 +283,8 @@ export const solutions: Solution[] = [
     slug: "education",
     title: "Education",
     category: "Education",
-    description: "Interactive classrooms, lecture halls, auditoriums, and campus-wide wayfinding display infrastructure.",
-    image: education,
+    description: "Interactive smart classrooms, lecture halls, auditoriums, and campus-wide wayfinding display infrastructure.",
+    image: solutionEducation,
     outcomes: ["Interactive flat panels", "Lecture halls & auditoriums", "Campus wayfinding"],
     highlights: ["4K Touch Panels", "Lecture Capture", "Campus Signage"],
   },
@@ -208,7 +293,7 @@ export const solutions: Solution[] = [
     title: "Corporate",
     category: "Corporate",
     description: "Executive boardrooms, experience centers, and corporate lobbies engineered to perform flawlessly.",
-    image: corporate,
+    image: solutionCorporate,
     outcomes: ["Hybrid meeting rooms", "Lobby video walls", "Workplace signage"],
     highlights: ["Executive Boardrooms", "Experience Centers", "Video Walls"],
   },
@@ -216,17 +301,17 @@ export const solutions: Solution[] = [
     slug: "government",
     title: "Government",
     category: "Government",
-    description: "Compliant visual display infrastructure for smart city command centers, assembly halls, and civic offices.",
-    image: controlRoom,
-    outcomes: ["Smart city command", "Citizen kiosks", "Public info displays"],
+    description: "Compliant visual display infrastructure for civic buildings, assembly halls, and public administration centers.",
+    image: solutionGovernment,
+    outcomes: ["Public infrastructure", "Assembly hall video walls", "Public info displays"],
     highlights: ["GeM Compliant", "24/7 Duty Rating", "Assembly Halls"],
   },
   {
     slug: "banking",
     title: "Banking",
     category: "Banking",
-    description: "Branch digital signage, customer queue management, exchange rate boards, and self-service kiosks.",
-    image: kiosk,
+    description: "Branch digital signage, customer queue management, exchange rate boards, and self-service banking kiosks.",
+    image: solutionBanking,
     outcomes: ["Branch rate displays", "Customer queue management", "Self-service banking kiosks"],
     highlights: ["Rate Boards", "Queue Systems", "Self-Service Kiosks"],
   },
@@ -234,29 +319,29 @@ export const solutions: Solution[] = [
     slug: "hospitality",
     title: "Hospitality",
     category: "Hospitality",
-    description: "High-impact backdrop LED walls for hotel lobbies, banquet halls, and digital venue signage.",
-    image: signage,
-    outcomes: ["Banquet LED walls", "Lobby storytelling", "Digital menu boards"],
-    highlights: ["Banquet LED Walls", "Lobby Displays", "Menu Boards"],
+    description: "High-impact backdrop LED walls for hotel lobbies, reception desks, banquet halls, and digital venue signage.",
+    image: solutionHospitality,
+    outcomes: ["Hotel reception displays", "Banquet LED walls", "Digital menu boards"],
+    highlights: ["Banquet LED Walls", "Reception Displays", "Menu Boards"],
   },
   {
     slug: "retail",
     title: "Retail",
     category: "Retail",
-    description: "High-brightness window poster displays, transparent glass facades, and interactive in-store kiosks.",
-    image: transparentLed,
-    outcomes: ["Window transparent LED", "Shelf-edge signage", "Queue & promo screens"],
-    highlights: ["Transparent Glass LED", "High-Brightness Posters", "Promo Screens"],
+    description: "High-brightness storefront window displays, transparent glass facades, and interactive in-store digital posters.",
+    image: signage,
+    outcomes: ["Window transparent LED", "Digital apparel posters", "In-store promo screens"],
+    highlights: ["Transparent Glass LED", "High-Brightness Posters", "In-Store Signage"],
   },
 ];
 
 export const industries = [
-  { title: "Education", image: education, slug: "education" },
-  { title: "Corporate", image: corporate, slug: "corporate" },
-  { title: "Government", image: controlRoom, slug: "government" },
-  { title: "Banking", image: kiosk, slug: "banking" },
-  { title: "Hospitality", image: signage, slug: "hospitality" },
-  { title: "Retail", image: transparentLed, slug: "retail" },
+  { title: "Education", image: solutionEducation, slug: "education" },
+  { title: "Corporate", image: solutionCorporate, slug: "corporate" },
+  { title: "Government", image: solutionGovernment, slug: "government" },
+  { title: "Banking", image: solutionBanking, slug: "banking" },
+  { title: "Hospitality", image: solutionHospitality, slug: "hospitality" },
+  { title: "Retail", image: signage, slug: "retail" },
 ];
 
 export const galleryItems = [

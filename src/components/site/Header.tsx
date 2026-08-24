@@ -1,34 +1,35 @@
 import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Mail, Menu, Phone, X, ChevronRight, LifeBuoy } from "lucide-react";
-import { company, solutions } from "@/data/site";
+import { Mail, Menu, Phone, X, ChevronRight, ChevronDown, LifeBuoy } from "lucide-react";
+import { company, products, solutions } from "@/data/site";
 import { HeaderBadges } from "./GovernmentBadges";
 import logoImg from "@/assets/mieux-logo.png";
 
 /* ─── Level 1 — Top Utility Bar Links ─── */
 const utilityLinks = [
-  { label: "Education & Corporate", to: "/solutions/education" },
-  { label: "Government", to: "/solutions/government" },
-  { label: "Retail", to: "/solutions/retail" },
+  { label: "Education & Corporate", to: "/solutions" },
+  { label: "Government", to: "/solutions" },
+  { label: "Retail", to: "/solutions" },
 ];
 
-/* ─── Level 2 — Main Navigation Items (Exact Order: Solutions, Products, About Us, Gallery, Contact) ─── */
+/* ─── Level 2 — Main Navigation Items ─── */
 const mainNavItems = [
-  { label: "Solutions", to: "/solutions", mega: "solutions" as const },
-  { label: "Products", to: "/products" },
-  { label: "About Us", to: "/about" },
+  { label: "Solutions", to: "/solutions" },
+  { label: "Products", to: "/products", mega: "products" as const },
+  { label: "Catalogue", to: "/catalogue" },
   { label: "Gallery", to: "/gallery" },
+  { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
 
 function Logo() {
   return (
-    <Link to="/" className="flex shrink-0 items-center py-1" aria-label={`${company.short} home`}>
+    <Link to="/" className="flex shrink-0 items-center py-0" aria-label={`${company.short} home`}>
       <img
         src={logoImg}
         alt="MIEUX Display"
-        className="h-11 w-auto max-w-[170px] sm:h-13 sm:max-w-[190px] object-contain drop-shadow-md transition-all brightness-110"
+        className="h-14 w-auto max-w-[260px] sm:h-[62px] sm:max-w-[340px] object-contain shrink-0 transition-transform duration-200 hover:scale-[1.02] drop-shadow-sm"
       />
     </Link>
   );
@@ -36,7 +37,7 @@ function Logo() {
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [openMega, setOpenMega] = useState<"solutions" | null>(null);
+  const [openMega, setOpenMega] = useState<"products" | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
@@ -61,10 +62,10 @@ export function Header() {
   return (
     <header className="fixed top-0 inset-x-0 z-[100]">
       {/* ─────────────────────────────────────────────── */}
-      {/* LEVEL 1 — TOP UTILITY BAR (36px HEIGHT)        */}
+      {/* LEVEL 1 — TOP UTILITY BAR (HIDDEN ON MOBILE)    */}
       {/* ─────────────────────────────────────────────── */}
-      <div className="bg-[#050505] text-[#A1A1AA] border-b border-[#27272A]">
-        <div className="mx-auto flex h-9 max-w-7xl items-center justify-between px-4 text-[12px] sm:text-[13px] font-medium tracking-wide sm:px-6">
+      <div className="hidden sm:block bg-[#050505] text-[#A1A1AA]">
+        <div className="mx-auto flex h-8 max-w-7xl items-center justify-between px-4 text-[12px] sm:text-[13px] font-medium tracking-wide sm:px-6">
           <nav className="hidden items-center gap-5 sm:flex">
             {utilityLinks.map((link, i) => (
               <span key={link.label} className="flex items-center gap-5">
@@ -96,25 +97,24 @@ export function Header() {
       </div>
 
       {/* ─────────────────────────────────────────────── */}
-      {/* LEVEL 2 — MAIN HEADER (64px HEIGHT)            */}
+      {/* LEVEL 2 — MAIN HEADER (WHITE BACKGROUND)        */}
       {/* ─────────────────────────────────────────────── */}
       <div
         onMouseLeave={() => setOpenMega(null)}
-        className={`relative bg-[#0D0D0F]/95 backdrop-blur-md border-b border-[#27272A] transition-all duration-300 text-[#F5F5F5] ${
-          scrolled ? "shadow-2xl bg-[#050505]/98" : ""
+        className={`relative bg-white/95 backdrop-blur-md border-b border-[#E4E4E7] transition-all duration-300 text-[#0D0D0F] ${
+          scrolled ? "shadow-md bg-white" : ""
         }`}
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
-          {/* Logo + Government Credibility Badges */}
+        <div className="mx-auto flex h-14 sm:h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 py-1">
           <div className="flex items-center">
             <Logo />
-            <HeaderBadges />
+            <HeaderBadges dark={false} />
           </div>
 
-          {/* Desktop main nav — centered (Solutions, Products, About Us, Gallery, Contact) */}
+          {/* Desktop main nav — centered (Solutions, Products, Gallery, About Us, Contact) */}
           <nav className="hidden items-center gap-6 xl:gap-8 lg:flex">
             {mainNavItems.map((item) => (
-              <div key={item.label} onMouseEnter={() => setOpenMega(item.mega || null)}>
+              <div key={item.label} className="relative" onMouseEnter={() => setOpenMega(item.mega || null)}>
                 <NavLink
                   to={item.to}
                   end={item.to === "/"}
@@ -125,15 +125,68 @@ export function Header() {
                   }}
                   className={({ isActive }) => {
                     const isItemActive = item.mega ? openMega === item.mega : isActive;
-                    return `nav-underline py-2 text-[14px] font-semibold transition-colors ${
+                    return `nav-underline py-2 text-[14px] font-semibold transition-colors flex items-center gap-1 cursor-pointer ${
                       isItemActive
                         ? "text-[#9B1B9E] font-bold active border-b-2 border-[#9B1B9E]"
-                        : "text-[#F5F5F5] hover:text-[#B52CB8]"
+                        : "text-[#0D0D0F] hover:text-[#9B1B9E]"
                     }`;
                   }}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  {item.mega && (
+                    <ChevronDown
+                      className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                        openMega === item.mega ? "rotate-180 text-[#9B1B9E]" : "opacity-60"
+                      }`}
+                    />
+                  )}
                 </NavLink>
+
+                {/* ─── Products Vertical Dropdown Menu ─── */}
+                {item.mega === "products" && (
+                  <AnimatePresence>
+                    {openMega === "products" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 6, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                        transition={{ duration: 0.18, ease: "easeOut" }}
+                        className="absolute top-full left-0 hidden w-72 overflow-hidden rounded-2xl border border-[#E4E4E7] bg-white p-2.5 shadow-2xl lg:block text-[#0D0D0F] z-50 mt-1"
+                      >
+                        <div className="flex flex-col space-y-0.5">
+                          <div className="px-3.5 py-2 border-b border-[#E4E4E7] mb-1">
+                            <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#9B1B9E]">
+                              PRODUCT CATEGORIES
+                            </span>
+                          </div>
+
+                          {products.map((entry) => (
+                            <Link
+                              key={entry.slug}
+                              to={`/products/${entry.slug}`}
+                              onClick={() => setOpenMega(null)}
+                              className="group flex items-center justify-between rounded-xl px-3.5 py-2 text-xs font-bold transition-all text-[#0D0D0F] hover:bg-[#9B1B9E]/10 hover:text-[#9B1B9E]"
+                            >
+                              <span>{entry.name}</span>
+                              <ChevronRight className="h-3.5 w-3.5 text-[#9B1B9E] opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" />
+                            </Link>
+                          ))}
+
+                          <div className="pt-2 border-t border-[#E4E4E7] mt-1">
+                            <Link
+                              to="/products"
+                              onClick={() => setOpenMega(null)}
+                              className="flex items-center justify-between rounded-xl bg-[#F8F9FA] px-3.5 py-2.5 text-xs font-extrabold text-[#FF6B00] hover:bg-[#9B1B9E] hover:text-white transition-all"
+                            >
+                              <span>View Full Catalog</span>
+                              <ChevronRight className="h-3.5 w-3.5" />
+                            </Link>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                )}
               </div>
             ))}
           </nav>
@@ -147,7 +200,7 @@ export function Header() {
               Get Quote
             </Link>
             <button
-              className="grid h-10 w-10 place-items-center rounded-xl border border-[#27272A] bg-[#151518] text-[#F5F5F5] lg:hidden"
+              className="grid h-10 w-10 place-items-center rounded-xl border border-[#E4E4E7] bg-slate-50 text-[#0D0D0F] lg:hidden"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
             >
@@ -155,50 +208,6 @@ export function Header() {
             </button>
           </div>
         </div>
-
-        {/* ─── Solutions Mega Menu ─── */}
-        <AnimatePresence>
-          {openMega === "solutions" && (
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2 }}
-              className="absolute inset-x-0 hidden border-b border-[#27272A] bg-[#0D0D0F] shadow-2xl lg:block text-[#F5F5F5]"
-            >
-              <div className="mx-auto grid max-w-7xl gap-8 px-6 py-8 lg:grid-cols-[1fr_280px]">
-                <div className="grid grid-cols-3 gap-x-8 gap-y-1">
-                  {solutions.map((entry) => (
-                    <Link
-                      key={entry.slug}
-                      to={`/solutions/${entry.slug}`}
-                      onClick={() => setOpenMega(null)}
-                      className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-sm font-medium transition-colors text-[#A1A1AA] hover:bg-[#151518] hover:text-[#F5F5F5]"
-                    >
-                      {entry.title}
-                      <ChevronRight className="h-4 w-4 -translate-x-1 text-[#9B1B9E] opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
-                    </Link>
-                  ))}
-                </div>
-                <div className="rounded-2xl border border-[#27272A] bg-[#151518] p-6 text-[#F5F5F5] shadow-2xl">
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#FF6B00]">
-                    Need help choosing?
-                  </p>
-                  <p className="mt-3 font-display text-base font-bold leading-snug text-[#F5F5F5]">
-                    Free site survey and pixel-pitch recommendation.
-                  </p>
-                  <Link
-                    to="/contact"
-                    onClick={() => setOpenMega(null)}
-                    className="mt-5 inline-flex items-center justify-center rounded-xl bg-[#9B1B9E] px-5 py-2.5 text-xs font-bold text-white shadow-md transition-all hover:bg-[#B52CB8] hover:-translate-y-0.5"
-                  >
-                    Talk to an expert
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
       {/* ─────────────────────────────────────────────── */}
@@ -212,26 +221,133 @@ export function Header() {
             exit={{ height: 0, opacity: 0 }}
             className="overflow-hidden border-b border-[#27272A] bg-[#0D0D0F] lg:hidden max-h-[85vh] overflow-y-auto text-[#F5F5F5]"
           >
-            <div className="space-y-1 px-4 py-4">
-              <div className="flex items-center gap-3 pb-3 border-b border-[#27272A] mb-2">
-                <HeaderBadges />
+            <div className="space-y-3 px-4 py-5">
+              <div className="space-y-1">
+                {mainNavItems.map((item) => (
+                  <div key={item.label}>
+                    {item.mega ? (
+                      <div>
+                        <button
+                          onClick={() => setOpenMega((curr) => (curr === item.mega ? null : item.mega!))}
+                          className="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-base font-bold text-[#F5F5F5] hover:bg-[#151518] hover:text-[#9B1B9E]"
+                        >
+                          <span>{item.label}</span>
+                          <ChevronDown
+                            className={`h-4 w-4 text-[#9B1B9E] transition-transform duration-200 ${
+                              openMega === item.mega ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                        {openMega === item.mega && (
+                          <div className="ml-3 my-1.5 space-y-1 border-l-2 border-[#9B1B9E] pl-3">
+                            {item.mega === "solutions"
+                              ? solutions.map((s) => (
+                                  <Link
+                                    key={s.slug}
+                                    to={`/solutions/${s.slug}`}
+                                    onClick={() => {
+                                      setOpenMega(null);
+                                      setMobileOpen(false);
+                                    }}
+                                    className="block py-1.5 text-sm font-semibold text-[#A1A1AA] hover:text-white"
+                                  >
+                                    {s.title}
+                                  </Link>
+                                ))
+                              : products.map((p) => (
+                                  <Link
+                                    key={p.slug}
+                                    to={`/products/${p.slug}`}
+                                    onClick={() => {
+                                      setOpenMega(null);
+                                      setMobileOpen(false);
+                                    }}
+                                    className="block py-1.5 text-sm font-semibold text-[#A1A1AA] hover:text-white"
+                                  >
+                                    {p.name}
+                                  </Link>
+                                ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <Link
+                        to={item.to}
+                        onClick={() => setMobileOpen(false)}
+                        className="block rounded-lg px-3 py-2.5 text-base font-bold hover:bg-[#151518] text-[#F5F5F5] hover:text-[#9B1B9E]"
+                      >
+                        {item.label}
+                      </Link>
+                    )}
+                  </div>
+                ))}
               </div>
 
-              {mainNavItems.map((item) => (
+              {/* Sector Quick Links inside Mobile Menu */}
+              <div className="py-2.5 px-3 rounded-xl bg-[#151518] border border-[#27272A] flex items-center justify-around text-xs font-bold text-[#9B1B9E]">
                 <Link
-                  key={item.label}
-                  to={item.to}
+                  to="/solutions/education"
                   onClick={() => setMobileOpen(false)}
-                  className="block rounded-lg px-3 py-3 text-sm font-semibold hover:bg-[#151518] text-[#F5F5F5] hover:text-[#B52CB8]"
+                  className="hover:underline transition-all hover:text-[#B52CB8]"
                 >
-                  {item.label}
+                  Education
                 </Link>
-              ))}
+                <span className="text-[#27272A] font-normal">|</span>
+                <Link
+                  to="/solutions/retail"
+                  onClick={() => setMobileOpen(false)}
+                  className="hover:underline transition-all hover:text-[#B52CB8]"
+                >
+                  Retail
+                </Link>
+                <span className="text-[#27272A] font-normal">|</span>
+                <Link
+                  to="/solutions/government"
+                  onClick={() => setMobileOpen(false)}
+                  className="hover:underline transition-all hover:text-[#B52CB8]"
+                >
+                  Defence
+                </Link>
+              </div>
+
+              {/* Contact & Utility Bar Info for Mobile */}
+              <div className="pt-3 border-t border-[#27272A] space-y-2">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-[#A1A1AA] px-3">
+                  Direct Contact & Support
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <a
+                    href={`tel:${company.phone.replace(/\s/g, "")}`}
+                    className="flex items-center gap-2.5 rounded-xl border border-[#27272A] bg-[#151518] px-3.5 py-2.5 text-xs font-bold text-white hover:border-[#FF7A00]"
+                  >
+                    <Phone className="h-4 w-4 text-[#FF7A00]" />
+                    <span>{company.phone}</span>
+                  </a>
+                  <a
+                    href={`mailto:${company.email}`}
+                    className="flex items-center gap-2.5 rounded-xl border border-[#27272A] bg-[#151518] px-3.5 py-2.5 text-xs font-semibold text-[#A1A1AA] hover:text-white hover:border-[#9B1B9E]"
+                  >
+                    <Mail className="h-4 w-4 text-[#9B1B9E]" />
+                    <span className="truncate">{company.email}</span>
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-2 px-3 pt-1 text-xs text-[#A1A1AA]">
+                  <Link
+                    to="/contact"
+                    onClick={() => setMobileOpen(false)}
+                    className="flex items-center gap-1.5 hover:text-white"
+                  >
+                    <LifeBuoy className="h-3.5 w-3.5 text-[#9B1B9E]" />
+                    <span>Support Desk</span>
+                  </Link>
+                </div>
+              </div>
 
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 block rounded-xl bg-[#9B1B9E] hover:bg-[#B52CB8] px-4 py-3 text-center text-sm font-bold text-white"
+                className="mt-3 block rounded-xl bg-[#9B1B9E] hover:bg-[#B52CB8] px-4 py-3 text-center text-sm font-bold text-white shadow-lg"
               >
                 Get Quote
               </Link>

@@ -9,9 +9,11 @@ import { ContactPage } from "@/pages/ContactPage";
 import { PrivacyPage } from "@/pages/PrivacyPage";
 import { TermsPage } from "@/pages/TermsPage";
 import { ProductsPage } from "@/pages/ProductsPage";
+import { CataloguePage } from "@/pages/CataloguePage";
 import { ProductDetailPage } from "@/pages/ProductDetailPage";
+import { DigitalStandeePage } from "@/pages/DigitalStandeePage";
+import { DigitalPodiumPage } from "@/pages/DigitalPodiumPage";
 import { SolutionsPage } from "@/pages/SolutionsPage";
-import { SolutionDetailPage } from "@/pages/SolutionDetailPage";
 import { GalleryPage } from "@/pages/GalleryPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 
@@ -41,7 +43,7 @@ export default function App() {
         <ScrollToTop />
         <div className="flex min-h-screen flex-col bg-[#050505] font-sans antialiased text-white w-full max-w-full overflow-x-hidden relative">
           <Header />
-          <main className="flex-1 pt-[96px] w-full max-w-full overflow-x-hidden">
+          <main className="flex-1 pt-14 sm:pt-[96px] w-full max-w-full overflow-x-hidden">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/gallery" element={<GalleryPage />} />
@@ -50,9 +52,9 @@ export default function App() {
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/products" element={<ProductsPage />} />
+              <Route path="/catalogue" element={<CataloguePage />} />
               <Route path="/products/:slug" element={<ProductDetailPage />} />
               <Route path="/solutions" element={<SolutionsPage />} />
-              <Route path="/solutions/:slug" element={<SolutionDetailPage />} />
               <Route path="/projects" element={<GalleryPage />} />
               <Route path="/resources" element={<ContactPage />} />
               <Route path="*" element={<NotFoundPage />} />

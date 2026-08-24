@@ -1,4 +1,5 @@
 import { Hero } from "@/components/site/Hero";
+import { ClientLogosMarquee } from "@/components/site/ClientLogosMarquee";
 import { ProductEcosystem } from "@/components/site/ProductEcosystem";
 import { InteractiveSolutions } from "@/components/site/InteractiveSolutions";
 import { MieuxAdvantage } from "@/components/site/MieuxAdvantage";
@@ -15,7 +16,10 @@ export function HomePage() {
       {/* 1. Cinematic Dark Hero + Compact Stats Strip */}
       <Hero />
 
-      {/* 2. Product Ecosystem — Interactive Category Visual Showcase */}
+      {/* 2. Brand Logos Marquee Banner */}
+      <ClientLogosMarquee />
+
+      {/* 3. Product Ecosystem — Interactive Category Visual Showcase */}
       <ProductEcosystem />
 
       {/* 3. Solutions — Interactive Industry Deployment Showcase */}

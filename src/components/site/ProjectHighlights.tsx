@@ -36,7 +36,7 @@ export function ProjectHighlights() {
       industry: "Retail",
       solution: "Commercial Displays",
       location: "Hyderabad",
-      image: img.indoorLed || "",
+      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80",
     },
   ];
 
