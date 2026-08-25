@@ -15,11 +15,11 @@ export function Hero() {
     setIndex((i) => (i + dir + heroProducts.length) % heroProducts.length);
   }, []);
 
-  // Autoplay carousel (always autoslides continuously every 2 seconds)
+  // Autoplay carousel (always autoslides continuously every 5 seconds)
   useEffect(() => {
     const t = setInterval(() => {
       setIndex((i) => (i + 1) % heroProducts.length);
-    }, 2000);
+    }, 5000);
     return () => clearInterval(t);
   }, []);
 
