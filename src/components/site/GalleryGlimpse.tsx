@@ -8,16 +8,20 @@ export function GalleryGlimpse() {
   if (!publishedEvents || publishedEvents.length === 0) return null;
 
   const event = publishedEvents[0];
+  if (!event) return null;
+
   const images = event.images;
   if (!images || images.length < 5) return null;
 
   const featureImage = images[0];
+  if (!featureImage) return null;
+
   const supportingImages = images.slice(1, 5);
 
   return (
-    <section className="py-16 lg:py-24 bg-[#F7F7F5] text-[#0D0D0F] border-b border-[#E4E4E7]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 lg:mb-12 gap-6">
+    <section className="py-12 sm:py-16 lg:py-24 bg-[#F7F7F5] text-[#0D0D0F] border-b border-[#E4E4E7]">
+      <div className="mx-auto max-w-7xl 2xl:max-w-[1536px] px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 lg:mb-12 gap-4 sm:gap-6">
           <SectionHeading
             dark={false}
             eyebrow="GALLERY"
@@ -30,14 +34,15 @@ export function GalleryGlimpse() {
               to="/gallery"
               className="inline-flex items-center text-[#9B1B9E] hover:text-[#0D0D0F] font-bold transition-colors text-xs uppercase tracking-wider"
             >
-              Explore Gallery <ArrowRight className="ml-2 w-4 h-4" />
+              <span>Explore Gallery</span>
+              <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-5 md:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-4 sm:gap-5 md:gap-6">
           <Reveal>
-            <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[360px] lg:min-h-[440px] rounded-[22px] overflow-hidden group shadow-md border border-[#E4E4E7] bg-white">
+            <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full min-h-[260px] xs:min-h-[320px] sm:min-h-[360px] lg:min-h-[440px] rounded-[18px] sm:rounded-[22px] overflow-hidden group shadow-md border border-[#E4E4E7] bg-white">
               <img
                 src={featureImage.url}
                 alt={featureImage.alt || "Event feature image"}
@@ -48,10 +53,10 @@ export function GalleryGlimpse() {
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-2 gap-4 md:gap-5">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:gap-5">
             {supportingImages.map((imgItem, idx) => (
               <Reveal key={idx} delay={0.1 * (idx + 1)}>
-                <div className="relative aspect-square rounded-[20px] overflow-hidden group shadow-md border border-[#E4E4E7] bg-white">
+                <div className="relative aspect-square rounded-[16px] sm:rounded-[20px] overflow-hidden group shadow-md border border-[#E4E4E7] bg-white">
                   <img
                     src={imgItem.url}
                     alt={imgItem.alt || "Event supporting image"}

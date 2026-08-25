@@ -340,26 +340,32 @@ export function CataloguePage() {
 
   return (
     <div className="bg-[#F8F9FA] text-[#0D0D0F] min-h-screen antialiased selection:bg-[#9B1B9E] selection:text-white">
-      {/* ─── 1. CLEAN CATALOGUE HERO (LIGHT / OFF-WHITE THEME) ─── */}
-      <section className="relative overflow-hidden bg-white border-b border-[#E4E4E7] py-10 sm:py-14 lg:py-18">
-        {/* Subtle purple background aura */}
+      {/* ─── 1. PREMIUM CATALOGUE HERO (DARK #050505) ─── */}
+      <section className="relative isolate overflow-hidden bg-[#050505] text-white border-b border-[#27272A] py-12 sm:py-18 lg:py-24">
+        {/* Subtle background ambient overlay */}
+        <img
+          src={img.controlRoom}
+          alt="Mieux Display Ambient Background"
+          className="absolute inset-0 h-full w-full object-cover opacity-15 pointer-events-none"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#050505]/95 to-[#050505] pointer-events-none" />
         <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,rgba(155,27,158,0.06),transparent)] pointer-events-none"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(155,27,158,0.18),transparent)] pointer-events-none"
           aria-hidden
         />
 
         <div className="mx-auto max-w-7xl 2xl:max-w-[1536px] px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-3xl">
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#9B1B9E]/30 bg-[#9B1B9E]/10 px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#9B1B9E] mb-3">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#FF6B00]/40 bg-[#FF6B00]/10 px-3.5 sm:px-4 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.2em] text-[#FF6B00] backdrop-blur-md mb-3">
               <FileText className="h-3.5 w-3.5 shrink-0" />
               PRODUCT CATALOGUE
             </span>
 
-            <h1 className="font-display text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0D0D0F] tracking-tight leading-tight">
+            <h1 className="font-display text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
               Explore Our <span className="text-[#9B1B9E]">Catalogue</span>
             </h1>
 
-            <p className="mt-3 sm:mt-4 text-xs sm:text-sm lg:text-base text-[#52525B] leading-relaxed font-medium max-w-2xl mx-auto">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm lg:text-base text-[#A1A1AA] leading-relaxed font-medium max-w-2xl mx-auto">
               Browse our product brochures and technical catalogues to find the right display solution for your requirements.
             </p>
           </Reveal>
