@@ -148,9 +148,9 @@ export function DigitalPodiumPage() {
   const [otpOpen, setOtpOpen] = useState(false);
 
   return (
-    <div className="bg-[#050505] text-[#F5F5F5] antialiased min-h-screen">
+    <div className="bg-[#050505] text-[#F5F5F5] antialiased min-h-screen selection:bg-[#9B1B9E] selection:text-white">
       {/* ─── 1. PREMIUM PRODUCT HERO (DARK #050505) ─── */}
-      <section className="relative isolate overflow-hidden bg-[#050505] text-white py-16 sm:py-20 lg:py-24 border-b border-[#27272A]">
+      <section className="relative isolate overflow-hidden bg-[#050505] text-white py-12 sm:py-18 lg:py-24 border-b border-[#27272A]">
         {/* Backdrop visual */}
         <img
           src={img.solutionCorporate}
@@ -160,53 +160,55 @@ export function DigitalPodiumPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#050505]/90 to-[#050505]/75 pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_50%,rgba(155,27,158,0.15),transparent)] pointer-events-none" aria-hidden />
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
-          <div className="grid gap-12 lg:grid-cols-12 items-center">
+        <div className="mx-auto max-w-7xl 2xl:max-w-[1536px] px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid gap-8 lg:gap-12 lg:grid-cols-12 items-center">
             {/* Left Content (6 cols) */}
             <div className="lg:col-span-6">
               <Reveal>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#FF6B00]/40 bg-[#FF6B00]/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em] text-[#FF6B00] mb-4 backdrop-blur-md">
-                  <Sparkles className="h-3.5 w-3.5" />
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#FF6B00]/40 bg-[#FF6B00]/10 px-3.5 py-1.5 text-[11px] sm:text-xs font-bold uppercase tracking-[0.22em] text-[#FF6B00] mb-4 backdrop-blur-md">
+                  <Sparkles className="h-3.5 w-3.5 shrink-0" />
                   SMART DIGITAL PODIUM
                 </div>
 
-                <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]">
+                <h1 className="font-display text-3xl xs:text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]">
                   Mieux Digital Podium
                 </h1>
-                <p className="mt-2 font-display text-lg sm:text-xl font-bold text-[#9B1B9E]">
+                <p className="mt-2 font-display text-base sm:text-lg lg:text-xl font-bold text-[#9B1B9E]">
                   Speak. Present. Impress.
                 </p>
 
-                <p className="mt-5 text-xs sm:text-base leading-relaxed text-[#A1A1AA] font-medium max-w-xl">
+                <p className="mt-4 sm:mt-5 text-xs sm:text-sm lg:text-base leading-relaxed text-[#A1A1AA] font-medium max-w-xl">
                   Elevate presentations with the Mieux Ultra and Slim Digital Podium. Designed for modern classrooms, conference halls, and auditoriums, it features an inbuilt touch screen monitor, integrated gooseneck microphone, and multiple connectivity options delivering seamless control, clear communication, and a professional presentation experience every time.
                 </p>
 
                 {/* CTAs */}
-                <div className="mt-8 flex flex-wrap items-center gap-4">
+                <div className="mt-6 sm:mt-8 flex flex-col xs:flex-row items-stretch xs:items-center gap-3.5 sm:gap-4">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 rounded-xl bg-[#9B1B9E] px-7 py-4 text-xs sm:text-sm font-bold text-white shadow-xl transition-all hover:bg-[#B52CB8] hover:-translate-y-0.5"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#9B1B9E] px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-bold text-white shadow-xl transition-all hover:bg-[#B52CB8] hover:-translate-y-0.5 min-h-[44px]"
                   >
-                    Request a Quote <ArrowRight className="h-4 w-4" />
+                    <span>Request a Quote</span>
+                    <ArrowRight className="h-4 w-4" />
                   </Link>
                   <button
                     onClick={() => setOtpOpen(true)}
-                    className="inline-flex items-center gap-2 rounded-xl border border-[#27272A] bg-[#151518]/90 px-7 py-4 text-xs sm:text-sm font-semibold text-white backdrop-blur-md transition-all hover:border-[#9B1B9E] hover:bg-[#1D1D21]"
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#27272A] bg-[#151518]/90 px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold text-white backdrop-blur-md transition-all hover:border-[#9B1B9E] hover:bg-[#1D1D21] min-h-[44px] cursor-pointer"
                   >
-                    <FileText className="h-4 w-4 text-[#9B1B9E]" /> Download Brochure
+                    <FileText className="h-4 w-4 text-[#9B1B9E]" />
+                    <span>Download Brochure</span>
                   </button>
                 </div>
 
                 {/* Quick Trust Highlights */}
-                <div className="mt-10 border-t border-[#27272A] pt-5 flex flex-wrap gap-6 text-xs font-semibold text-[#A1A1AA]">
+                <div className="mt-8 sm:mt-10 border-t border-[#27272A] pt-5 flex flex-wrap gap-4 sm:gap-6 text-xs font-semibold text-[#A1A1AA]">
                   <span className="flex items-center gap-1.5 text-white">
-                    <CheckCircle2 className="h-4 w-4 text-[#9B1B9E]" /> 21.5" Inbuilt Touch Screen
+                    <CheckCircle2 className="h-4 w-4 text-[#9B1B9E] shrink-0" /> 21.5" Inbuilt Touch Screen
                   </span>
                   <span className="flex items-center gap-1.5 text-white">
-                    <CheckCircle2 className="h-4 w-4 text-[#FF6B00]" /> Dual Gooseneck Microphones
+                    <CheckCircle2 className="h-4 w-4 text-[#FF6B00] shrink-0" /> Dual Gooseneck Microphones
                   </span>
                   <span className="flex items-center gap-1.5 text-white">
-                    <CheckCircle2 className="h-4 w-4 text-[#9B1B9E]" /> Motorized Height & Tilt
+                    <CheckCircle2 className="h-4 w-4 text-[#9B1B9E] shrink-0" /> Motorized Height & Tilt
                   </span>
                 </div>
               </Reveal>
@@ -219,24 +221,24 @@ export function DigitalPodiumPage() {
                   <div className="absolute -inset-4 rounded-[2.5rem] bg-[#9B1B9E]/25 blur-3xl" aria-hidden />
 
                   {/* Pure White Main Product Canvas */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[26px] border border-[#E4E4E7] bg-white shadow-2xl flex items-center justify-center p-4 sm:p-6">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[20px] sm:rounded-[26px] border border-[#E4E4E7] bg-white shadow-2xl flex items-center justify-center p-3.5 sm:p-6">
                     <img
                       src={img.digitalPodium}
                       alt="Mieux Digital Podium"
                       className="h-full w-full object-contain object-center transition-transform duration-500 hover:scale-105"
                     />
 
-                    <div className="absolute bottom-5 left-5 right-5 z-10 flex items-center justify-between rounded-xl bg-white/95 border border-[#E4E4E7] p-4 shadow-md backdrop-blur-md">
+                    <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 z-10 flex items-center justify-between rounded-xl bg-white/95 border border-[#E4E4E7] p-3 sm:p-4 shadow-md backdrop-blur-md">
                       <div>
-                        <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#FF6B00]">
-                          PREMIUM PRESENTATION HARDWARE
+                        <span className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-wider text-[#FF6B00]">
+                          PREMIUM HARDWARE
                         </span>
                         <h4 className="text-xs sm:text-sm font-extrabold text-[#0D0D0F]">
                           Mieux Ultra & Slim Series
                         </h4>
                       </div>
-                      <span className="rounded-full bg-[#9B1B9E] px-3 py-1 text-[11px] font-bold text-white shadow-md">
-                        Inbuilt Touch + Mic
+                      <span className="rounded-full bg-[#9B1B9E] px-2.5 sm:px-3 py-1 text-[10px] sm:text-[11px] font-bold text-white shadow-md shrink-0">
+                        Touch + Mic
                       </span>
                     </div>
                   </div>
@@ -248,13 +250,13 @@ export function DigitalPodiumPage() {
       </section>
 
       {/* ─── 2. FEATURE STRIP (PURE WHITE LIGHT SECTION bg-[#F8F9FA]) ─── */}
-      <section className="bg-[#F8F9FA] text-[#0D0D0F] py-14 lg:py-20 border-b border-[#E4E4E7]">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+      <section className="bg-[#F8F9FA] text-[#0D0D0F] py-10 sm:py-14 lg:py-18 border-b border-[#E4E4E7]">
+        <div className="mx-auto max-w-7xl 2xl:max-w-[1536px] px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
             <span className="inline-flex items-center gap-2 rounded-full border border-[#9B1B9E]/30 bg-[#9B1B9E]/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#9B1B9E]">
               PODIUM ARCHITECTURE
             </span>
-            <h2 className="mt-2.5 text-3xl font-extrabold sm:text-4xl text-[#0D0D0F] tracking-tight font-display">
+            <h2 className="mt-2 font-display text-2xl xs:text-3xl font-extrabold sm:text-4xl text-[#0D0D0F] tracking-tight">
               Engineered for Seamless <span className="text-[#9B1B9E]">Speaker Confidence</span>
             </h2>
             <p className="mt-1.5 text-xs sm:text-sm text-[#52525B] font-medium max-w-xl mx-auto">
@@ -262,23 +264,23 @@ export function DigitalPodiumPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {featureStrip.map((feat, idx) => {
               const IconComp = feat.icon;
               return (
                 <Reveal key={feat.title} delay={idx * 0.05}>
-                  <div className="rounded-[20px] border border-[#E4E4E7] bg-white p-6 shadow-sm hover:shadow-xl hover:border-[#9B1B9E] transition-all duration-300 h-full flex flex-col justify-between">
+                  <div className="rounded-[18px] sm:rounded-[20px] border border-[#E4E4E7] bg-white p-5 sm:p-6 shadow-sm hover:shadow-xl hover:border-[#9B1B9E] transition-all duration-300 h-full flex flex-col justify-between">
                     <div>
-                      <div className="grid h-12 w-12 place-items-center rounded-xl bg-slate-100 border border-[#E4E4E7] text-[#9B1B9E] mb-4">
-                        <IconComp className="h-6 w-6" />
+                      <div className="grid h-11 w-11 sm:h-12 sm:w-12 place-items-center rounded-xl bg-slate-100 border border-[#E4E4E7] text-[#9B1B9E] mb-3.5">
+                        <IconComp className="h-5 w-5 sm:h-6 sm:w-6" />
                       </div>
-                      <h3 className="font-display text-lg font-bold text-[#0D0D0F]">
+                      <h3 className="font-display text-base sm:text-lg font-bold text-[#0D0D0F]">
                         {feat.title}
                       </h3>
                       <span className="inline-block mt-0.5 text-xs font-bold text-[#FF6B00]">
                         {feat.specs}
                       </span>
-                      <p className="mt-2 text-xs text-[#52525B] leading-relaxed font-medium">
+                      <p className="mt-1.5 text-xs text-[#52525B] leading-relaxed font-medium">
                         {feat.desc}
                       </p>
                     </div>
